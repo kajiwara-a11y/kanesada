@@ -1170,8 +1170,8 @@ PAGES.dashboard = () => `
       <div class="w-card"><div class="w-day">読込中…</div></div>
     </div>
     <div style="margin-top:10px;">
-      <div class="metric-row"><span class="metric-label">温度感応商品</span><span class="metric-value">38品目</span></div>
-      <div class="metric-row"><span class="metric-label">調整推奨品目</span><span class="metric-value">12品目</span></div>
+      <div class="metric-row"><span class="metric-label">温度感応商品</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">調整推奨品目</span><span class="metric-value">—</span></div>
     </div>
   </div>
 </div>
@@ -1236,9 +1236,9 @@ PAGES.flow = () => `
 
 <div class="grid-3">
   <div class="card"><div class="card-title" style="margin-bottom:8px;">今日のタスク（承認待ち）</div>
-    <div class="metric-row"><span class="metric-label">製造計画</span><span class="metric-value">17件</span></div>
-    <div class="metric-row"><span class="metric-label">原料発注</span><span class="metric-value">18件</span></div>
-    <div class="metric-row"><span class="metric-label">廃棄報告</span><span class="metric-value">3件</span></div>
+    <div class="metric-row"><span class="metric-label">製造計画</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">原料発注</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">廃棄報告</span><span class="metric-value">—</span></div>
   </div>
   <div class="card"><div class="card-title" style="margin-bottom:8px;">本日の重要アラート</div>
     <div style="font-size:11px;color:#dc2626;">• 旨辛チゲおでん 在庫過多</div>
@@ -1246,8 +1246,8 @@ PAGES.flow = () => `
     <div style="font-size:11px;color:#d97706;">• 気温28℃でちくわ需要急増</div>
   </div>
   <div class="card"><div class="card-title" style="margin-bottom:8px;">AI処理ステータス</div>
-    <div class="metric-row"><span class="metric-label">最終学習</span><span class="metric-value">5/25 03:00</span></div>
-    <div class="metric-row"><span class="metric-label">次回学習</span><span class="metric-value">5/27 03:00</span></div>
+    <div class="metric-row"><span class="metric-label">最終学習</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">次回学習</span><span class="metric-value">—</span></div>
     <div class="metric-row"><span class="metric-label">予測精度</span><span class="metric-value up">87.4%</span></div>
   </div>
 </div>
@@ -1289,10 +1289,10 @@ PAGES.forecast = () => `
       <div class="card-title" style="margin-bottom:8px;">予測根拠（説明可能AI）</div>
       <div class="metric-row"><span class="metric-label">前年同期傾向</span><span class="metric-value up">+12%</span></div>
       <div class="metric-row"><span class="metric-label">気温補正(28℃)</span><span class="metric-value up">+8%</span></div>
-      <div class="metric-row"><span class="metric-label">曜日パターン(火)</span><span class="metric-value">+3%</span></div>
+      <div class="metric-row"><span class="metric-label">曜日パターン(火)</span><span class="metric-value">—</span></div>
       <div class="metric-row"><span class="metric-label">直営店POS連動</span><span class="metric-value up">+4%</span></div>
-      <div class="metric-row"><span class="metric-label">季節要因(5月)</span><span class="metric-value">-2%</span></div>
-      <div class="metric-row"><span class="metric-label">最終予測</span><span class="metric-value">1,420個</span></div>
+      <div class="metric-row"><span class="metric-label">季節要因(5月)</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">最終予測</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card" style="padding:0;">
@@ -1336,13 +1336,13 @@ PAGES.forecast = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">地域別 需要分布</div></div><canvas id="fcRegionChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">地域別 来月予測</div>
-      <div class="metric-row"><span class="metric-label">関東</span><span class="metric-value">¥78M (▲5%)</span></div>
-      <div class="metric-row"><span class="metric-label">東海</span><span class="metric-value">¥52M (▲3%)</span></div>
-      <div class="metric-row"><span class="metric-label">関西</span><span class="metric-value">¥28M (▲2%)</span></div>
-      <div class="metric-row"><span class="metric-label">中部</span><span class="metric-value">¥12M (±0%)</span></div>
-      <div class="metric-row"><span class="metric-label">九州</span><span class="metric-value">¥6M (▼1%)</span></div>
-      <div class="metric-row"><span class="metric-label">北海道・東北</span><span class="metric-value">¥4M (▼3%)</span></div>
-      <div class="metric-row"><span class="metric-label">中四国</span><span class="metric-value">¥2M (±0%)</span></div>
+      <div class="metric-row"><span class="metric-label">関東</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">東海</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">関西</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">中部</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">九州</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">北海道・東北</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">中四国</span><span class="metric-value">—</span></div>
     </div>
   </div>
 </div>
@@ -1487,7 +1487,7 @@ PAGES.production = () => `
 
 <div id="pr-daily" class="tab-content active">
   <div class="grid-4" style="margin-bottom:10px;">
-    <div class="kpi"><div class="kpi-label">予定製造数</div><div class="kpi-value">—</div><div class="kpi-change">—</div></div>
+    <div class="kpi"><div class="kpi-label">予定製造数</div><div class="kpi-value">16,970</div><div class="kpi-change">計画値合計</div></div>
     <div class="kpi"><div class="kpi-label">予測売上</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
     <div class="kpi"><div class="kpi-label">予測廃棄数</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
     <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
@@ -1527,17 +1527,17 @@ PAGES.production = () => `
       <table>
         <thead><tr><th>ライン</th><th class="num">5/26火</th><th class="num">5/27水</th><th class="num">5/28木</th><th class="num">5/29金</th><th class="num">5/30土</th><th class="num">5/31日</th><th class="num">6/1月</th><th class="num">週計</th></tr></thead>
         <tbody>
-          <tr><td>ちくわ-1</td><td class="num heatmap-cell" style="background:#fde68a;">2,500</td><td class="num heatmap-cell" style="background:#fde68a;">2,580</td><td class="num heatmap-cell" style="background:#fef3c7;">2,100</td><td class="num heatmap-cell" style="background:#fef3c7;">1,800</td><td class="num heatmap-cell" style="background:#fef3c7;">1,650</td><td class="num heatmap-cell" style="background:#fefce8;">1,400</td><td class="num heatmap-cell" style="background:#fef3c7;">2,000</td><td class="num">14,030</td></tr>
-          <tr><td>さつま揚-1</td><td class="num heatmap-cell" style="background:#fcd34d;">4,600</td><td class="num heatmap-cell" style="background:#fcd34d;">4,800</td><td class="num heatmap-cell" style="background:#fde68a;">3,800</td><td class="num heatmap-cell" style="background:#fde68a;">3,200</td><td class="num heatmap-cell" style="background:#fef3c7;">2,800</td><td class="num heatmap-cell" style="background:#fef3c7;">2,600</td><td class="num heatmap-cell" style="background:#fde68a;">3,600</td><td class="num">25,400</td></tr>
-          <tr><td>さつま揚-2</td><td class="num heatmap-cell" style="background:#fefce8;">320</td><td class="num heatmap-cell" style="background:#fefce8;">340</td><td class="num heatmap-cell" style="background:#fefce8;">300</td><td class="num heatmap-cell" style="background:#fefce8;">280</td><td class="num heatmap-cell" style="background:#fefce8;">260</td><td class="num heatmap-cell" style="background:#fefce8;">240</td><td class="num heatmap-cell" style="background:#fefce8;">300</td><td class="num">2,040</td></tr>
-          <tr><td>串商品-1</td><td class="num heatmap-cell" style="background:#fde68a;">2,280</td><td class="num heatmap-cell" style="background:#fde68a;">2,400</td><td class="num heatmap-cell" style="background:#fef3c7;">1,900</td><td class="num heatmap-cell" style="background:#fef3c7;">1,600</td><td class="num heatmap-cell" style="background:#fef3c7;">1,500</td><td class="num heatmap-cell" style="background:#fefce8;">1,300</td><td class="num heatmap-cell" style="background:#fef3c7;">1,800</td><td class="num">12,780</td></tr>
-          <tr><td>串商品-2</td><td class="num heatmap-cell" style="background:#fefce8;">720</td><td class="num heatmap-cell" style="background:#fefce8;">760</td><td class="num heatmap-cell" style="background:#fefce8;">680</td><td class="num heatmap-cell" style="background:#fefce8;">600</td><td class="num heatmap-cell" style="background:#fefce8;">580</td><td class="num heatmap-cell" style="background:#fefce8;">520</td><td class="num heatmap-cell" style="background:#fefce8;">680</td><td class="num">4,540</td></tr>
-          <tr><td>新食感-1</td><td class="num heatmap-cell" style="background:#fde68a;">1,820</td><td class="num heatmap-cell" style="background:#fde68a;">1,920</td><td class="num heatmap-cell" style="background:#fef3c7;">1,500</td><td class="num heatmap-cell" style="background:#fef3c7;">1,300</td><td class="num heatmap-cell" style="background:#fef3c7;">1,200</td><td class="num heatmap-cell" style="background:#fefce8;">1,100</td><td class="num heatmap-cell" style="background:#fef3c7;">1,500</td><td class="num">10,340</td></tr>
-          <tr><td>天ぷら-1</td><td class="num heatmap-cell" style="background:#fef3c7;">1,560</td><td class="num heatmap-cell" style="background:#fef3c7;">1,620</td><td class="num heatmap-cell" style="background:#fef3c7;">1,400</td><td class="num heatmap-cell" style="background:#fef3c7;">1,200</td><td class="num heatmap-cell" style="background:#fefce8;">1,000</td><td class="num heatmap-cell" style="background:#fefce8;">900</td><td class="num heatmap-cell" style="background:#fef3c7;">1,300</td><td class="num">8,980</td></tr>
-          <tr><td>素材-1</td><td class="num heatmap-cell" style="background:#fefce8;">1,060</td><td class="num heatmap-cell" style="background:#fefce8;">1,120</td><td class="num heatmap-cell" style="background:#fefce8;">980</td><td class="num heatmap-cell" style="background:#fefce8;">880</td><td class="num heatmap-cell" style="background:#fefce8;">800</td><td class="num heatmap-cell" style="background:#fefce8;">720</td><td class="num heatmap-cell" style="background:#fefce8;">920</td><td class="num">6,480</td></tr>
-          <tr><td>夏季限定-1</td><td class="num heatmap-cell" style="background:#fde68a;">1,280</td><td class="num heatmap-cell" style="background:#fde68a;">1,350</td><td class="num heatmap-cell" style="background:#fef3c7;">920</td><td class="num heatmap-cell" style="background:#fefce8;">600</td><td class="num heatmap-cell" style="background:#fefce8;">500</td><td class="num heatmap-cell" style="background:#fefce8;">450</td><td class="num heatmap-cell" style="background:#fef3c7;">820</td><td class="num">5,920</td></tr>
-          <tr><td>おでん-1</td><td class="num heatmap-cell" style="background:#fefce8;">180</td><td class="num heatmap-cell" style="background:#fefce8;">160</td><td class="num heatmap-cell" style="background:#fefce8;">140</td><td class="num heatmap-cell" style="background:#fefce8;">220</td><td class="num heatmap-cell" style="background:#fefce8;">280</td><td class="num heatmap-cell" style="background:#fefce8;">320</td><td class="num heatmap-cell" style="background:#fefce8;">200</td><td class="num">1,500</td></tr>
-          <tr><td>弁当向-1</td><td class="num heatmap-cell" style="background:#fefce8;">650</td><td class="num heatmap-cell" style="background:#fefce8;">680</td><td class="num heatmap-cell" style="background:#fefce8;">620</td><td class="num heatmap-cell" style="background:#fefce8;">580</td><td class="num heatmap-cell" style="background:#fefce8;">520</td><td class="num heatmap-cell" style="background:#fefce8;">480</td><td class="num heatmap-cell" style="background:#fefce8;">600</td><td class="num">4,130</td></tr>
+          <tr><td>ちくわ-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>さつま揚-1</td><td class="num heatmap-cell" style="background:#fcd34d;">—</td><td class="num heatmap-cell" style="background:#fcd34d;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num">—</td></tr>
+          <tr><td>さつま揚-2</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>串商品-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>串商品-2</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>新食感-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>天ぷら-1</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>素材-1</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>夏季限定-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>おでん-1</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>弁当向-1</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
           <tr style="font-weight:600;background:#f9fafb;"><td>計</td><td class="num">16,970</td><td class="num">17,730</td><td class="num">14,340</td><td class="num">12,260</td><td class="num">11,090</td><td class="num">10,030</td><td class="num">13,720</td><td class="num">96,140</td></tr>
         </tbody>
       </table>
@@ -1549,9 +1549,9 @@ PAGES.production = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">工場別 製造割当</div></div><canvas id="prFactoryChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">工場別 製造能力</div>
-      <div class="metric-row"><span class="metric-label">関東工場</span><span class="metric-value">日産 50,000個 (稼働率82%)</span></div>
-      <div class="metric-row"><span class="metric-label">東海工場</span><span class="metric-value">日産 32,000個 (稼働率76%)</span></div>
-      <div class="metric-row"><span class="metric-label">合計</span><span class="metric-value">日産 82,000個</span></div>
+      <div class="metric-row"><span class="metric-label">関東工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">東海工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">合計</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card" style="padding:0;">
@@ -1559,12 +1559,12 @@ PAGES.production = () => `
     <table>
       <thead><tr><th>商品</th><th class="num">関東工場</th><th class="num">東海工場</th><th class="num">合計</th><th>主担当</th></tr></thead>
       <tbody>
-        <tr><td>カネスエ磯辺揚げ</td><td class="num">1,420</td><td class="num">800</td><td class="num">2,220</td><td>関東</td></tr>
-        <tr><td>ゲンキーいか</td><td class="num">2,420</td><td class="num">1,200</td><td class="num">3,620</td><td>関東</td></tr>
-        <tr><td>もっち餅(角型)4枚</td><td class="num">1,820</td><td class="num">900</td><td class="num">2,720</td><td>関東</td></tr>
-        <tr><td>串王3本 いか</td><td class="num">1,360</td><td class="num">0</td><td class="num">1,360</td><td>関東のみ</td></tr>
-        <tr><td>素材をいただく 生姜</td><td class="num">580</td><td class="num">320</td><td class="num">900</td><td>関東</td></tr>
-        <tr><td>韓国風さつま揚</td><td class="num">0</td><td class="num">320</td><td class="num">320</td><td>東海のみ</td></tr>
+        <tr><td>カネスエ磯辺揚げ</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>ゲンキーいか</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>もっち餅(角型)4枚</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>串王3本 いか</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>素材をいただく 生姜</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>韓国風さつま揚</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -1579,11 +1579,11 @@ PAGES.production = () => `
     <table>
       <thead><tr><th>計画日</th><th class="num">予定数</th><th class="num">実績</th><th class="num">差異</th><th class="num">廃棄率</th><th>承認者</th><th>状態</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td>2026/5/25</td><td class="num">37,800</td><td class="num">38,420</td><td class="num up">+1.6%</td><td class="num">3.1%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/24</td><td class="num">36,200</td><td class="num">36,900</td><td class="num up">+1.9%</td><td class="num">3.4%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/23</td><td class="num">37,500</td><td class="num">37,800</td><td class="num up">+0.8%</td><td class="num">3.0%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/22</td><td class="num">38,000</td><td class="num">37,200</td><td class="num down">-2.1%</td><td class="num">3.5%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/21</td><td class="num">38,200</td><td class="num">37,500</td><td class="num down">-1.8%</td><td class="num">3.4%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num up">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num up">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num up">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num down">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num down">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -1818,7 +1818,7 @@ PAGES.procurement = () => `
 PAGES.disposal = () => `
 <div class="page-scope">
 <div class="page-title">
-  <div><h2>廃棄管理</h2><div class="meta">揚物ライン日報（5/21-5/25）｜月累計 ¥320万</div></div>
+  <div><h2>廃棄管理</h2><div class="meta">揚物ライン日報（5/21-5/25）｜月累計 —</div></div>
   <div class="page-actions">
     <button class="btn btn-secondary">CSV出力</button>
     <button class="btn btn-primary" onclick="document.getElementById('newDisposal').scrollIntoView({behavior:'smooth'})">新規廃棄登録</button>
@@ -1876,11 +1876,11 @@ PAGES.disposal = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">廃棄原因の内訳（今月）</div></div><canvas id="dpCauseChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">原因別 累計金額</div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-red">過剰生産</span></span><span class="metric-value">¥58万 (47%)</span></div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-blue">需要外れ</span></span><span class="metric-value">¥36万 (29%)</span></div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-yellow">賞味期限切れ</span></span><span class="metric-value">¥22万 (18%)</span></div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-purple">天候変動</span></span><span class="metric-value">¥6万 (5%)</span></div>
-      <div class="metric-row"><span class="metric-label">製造不良</span><span class="metric-value">¥2万 (1%)</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-red">過剰生産</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-blue">需要外れ</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-yellow">賞味期限切れ</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-purple">天候変動</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">製造不良</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card"><div class="card-header"><div class="card-title">廃棄金額 推移（6ヶ月）</div></div><canvas id="dpTrendChart" height="180"></canvas></div>
@@ -2060,10 +2060,10 @@ PAGES.foodloss = () => `
 <div class="card">
   <div class="card-header"><div class="card-title">削減効果シミュレーション</div></div>
   <div style="padding:10px;background:#f9fafb;border-radius:4px;font-size:11px;line-height:1.8;">
-    <strong>現状（AI導入前ベースライン）:</strong> 月間廃棄額 ¥310万｜年間 ¥3,720万<br>
-    <strong>現在（AI導入半年）:</strong> 月間廃棄額 ¥124万（▼60%）｜年換算 ¥1,488万<br>
-    <strong>削減効果:</strong> <span style="color:#10b981;font-weight:600;">年間 ¥2,232万削減</span> ｜投資¥1,000万→投資回収9.2ヶ月<br>
-    <strong>1年後目標:</strong> 廃棄率1.5%（現在2.8%）｜月間¥58万まで削減
+    <strong>現状（AI導入前ベースライン）:</strong> 月間廃棄額 —｜年間 —<br>
+    <strong>現在（AI導入半年）:</strong> 月間廃棄額 —（▼60%）｜年換算 —<br>
+    <strong>削減効果:</strong> <span style="color:#10b981;font-weight:600;">年間 —削減</span> ｜投資—→投資回収9.2ヶ月<br>
+    <strong>1年後目標:</strong> 廃棄率1.5%（現在2.8%）｜月間—まで削減
   </div>
 </div>
 `;
@@ -2112,21 +2112,21 @@ PAGES.execreport = () => `
 </div>
 <div class="card">
   <div class="card-header"><div class="card-title">経営インパクト サマリー</div></div>
-  <div class="metric-row"><span class="metric-label">AI導入開始</span><span class="metric-value">2025年12月</span></div>
-  <div class="metric-row"><span class="metric-label">対象範囲</span><span class="metric-value">関東工場・主要50品目</span></div>
-  <div class="metric-row"><span class="metric-label">フードロス削減（半年）</span><span class="metric-value up">¥186万</span></div>
-  <div class="metric-row"><span class="metric-label">人件費削減（製造計画）</span><span class="metric-value up">¥85万</span></div>
-  <div class="metric-row"><span class="metric-label">原料費削減（過剰仕入回避）</span><span class="metric-value up">¥98万</span></div>
-  <div class="metric-row"><span class="metric-label">在庫保管コスト削減</span><span class="metric-value up">¥42万</span></div>
-  <div class="metric-row"><span class="metric-label">累計効果（半年）</span><span class="metric-value up" style="font-size:14px;">¥411万</span></div>
-  <div class="metric-row"><span class="metric-label">投資額</span><span class="metric-value">¥1,000万</span></div>
-  <div class="metric-row"><span class="metric-label">予想投資回収</span><span class="metric-value">9.2ヶ月（あと3ヶ月）</span></div>
+  <div class="metric-row"><span class="metric-label">AI導入開始</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">対象範囲</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">フードロス削減（半年）</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">人件費削減（製造計画）</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">原料費削減（過剰仕入回避）</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">在庫保管コスト削減</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">累計効果（半年）</span><span class="metric-value up" style="font-size:14px;">—</span></div>
+  <div class="metric-row"><span class="metric-label">投資額</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">予想投資回収</span><span class="metric-value">—</span></div>
 </div>
 <div class="card">
   <div class="card-header"><div class="card-title">SDGs貢献度</div></div>
   <div class="metric-row"><span class="metric-label">目標12.3「食品ロス半減」</span><span class="metric-value up">▲ 60%達成</span></div>
-  <div class="metric-row"><span class="metric-label">CO2換算削減量</span><span class="metric-value">2.8 t-CO2 (年換算33.6t)</span></div>
-  <div class="metric-row"><span class="metric-label">廃棄食品削減量</span><span class="metric-value">1,820 kg/月</span></div>
+  <div class="metric-row"><span class="metric-label">CO2換算削減量</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">廃棄食品削減量</span><span class="metric-value">—</span></div>
 </div>
 `;
 
@@ -2509,7 +2509,7 @@ PAGES.production = () => `
 
 <div id="pr-daily" class="tab-content active">
   <div class="grid-4" style="margin-bottom:10px;">
-    <div class="kpi"><div class="kpi-label">予定製造数</div><div class="kpi-value">—</div><div class="kpi-change">—</div></div>
+    <div class="kpi"><div class="kpi-label">予定製造数</div><div class="kpi-value">16,970</div><div class="kpi-change">計画値合計</div></div>
     <div class="kpi"><div class="kpi-label">予測売上</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
     <div class="kpi"><div class="kpi-label">予測廃棄数</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
     <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
@@ -2549,17 +2549,17 @@ PAGES.production = () => `
       <table>
         <thead><tr><th>ライン</th><th class="num">5/26火</th><th class="num">5/27水</th><th class="num">5/28木</th><th class="num">5/29金</th><th class="num">5/30土</th><th class="num">5/31日</th><th class="num">6/1月</th><th class="num">週計</th></tr></thead>
         <tbody>
-          <tr><td>ちくわ-1</td><td class="num heatmap-cell" style="background:#fde68a;">2,500</td><td class="num heatmap-cell" style="background:#fde68a;">2,580</td><td class="num heatmap-cell" style="background:#fef3c7;">2,100</td><td class="num heatmap-cell" style="background:#fef3c7;">1,800</td><td class="num heatmap-cell" style="background:#fef3c7;">1,650</td><td class="num heatmap-cell" style="background:#fefce8;">1,400</td><td class="num heatmap-cell" style="background:#fef3c7;">2,000</td><td class="num">14,030</td></tr>
-          <tr><td>さつま揚-1</td><td class="num heatmap-cell" style="background:#fcd34d;">4,600</td><td class="num heatmap-cell" style="background:#fcd34d;">4,800</td><td class="num heatmap-cell" style="background:#fde68a;">3,800</td><td class="num heatmap-cell" style="background:#fde68a;">3,200</td><td class="num heatmap-cell" style="background:#fef3c7;">2,800</td><td class="num heatmap-cell" style="background:#fef3c7;">2,600</td><td class="num heatmap-cell" style="background:#fde68a;">3,600</td><td class="num">25,400</td></tr>
-          <tr><td>さつま揚-2</td><td class="num heatmap-cell" style="background:#fefce8;">320</td><td class="num heatmap-cell" style="background:#fefce8;">340</td><td class="num heatmap-cell" style="background:#fefce8;">300</td><td class="num heatmap-cell" style="background:#fefce8;">280</td><td class="num heatmap-cell" style="background:#fefce8;">260</td><td class="num heatmap-cell" style="background:#fefce8;">240</td><td class="num heatmap-cell" style="background:#fefce8;">300</td><td class="num">2,040</td></tr>
-          <tr><td>串商品-1</td><td class="num heatmap-cell" style="background:#fde68a;">2,280</td><td class="num heatmap-cell" style="background:#fde68a;">2,400</td><td class="num heatmap-cell" style="background:#fef3c7;">1,900</td><td class="num heatmap-cell" style="background:#fef3c7;">1,600</td><td class="num heatmap-cell" style="background:#fef3c7;">1,500</td><td class="num heatmap-cell" style="background:#fefce8;">1,300</td><td class="num heatmap-cell" style="background:#fef3c7;">1,800</td><td class="num">12,780</td></tr>
-          <tr><td>串商品-2</td><td class="num heatmap-cell" style="background:#fefce8;">720</td><td class="num heatmap-cell" style="background:#fefce8;">760</td><td class="num heatmap-cell" style="background:#fefce8;">680</td><td class="num heatmap-cell" style="background:#fefce8;">600</td><td class="num heatmap-cell" style="background:#fefce8;">580</td><td class="num heatmap-cell" style="background:#fefce8;">520</td><td class="num heatmap-cell" style="background:#fefce8;">680</td><td class="num">4,540</td></tr>
-          <tr><td>新食感-1</td><td class="num heatmap-cell" style="background:#fde68a;">1,820</td><td class="num heatmap-cell" style="background:#fde68a;">1,920</td><td class="num heatmap-cell" style="background:#fef3c7;">1,500</td><td class="num heatmap-cell" style="background:#fef3c7;">1,300</td><td class="num heatmap-cell" style="background:#fef3c7;">1,200</td><td class="num heatmap-cell" style="background:#fefce8;">1,100</td><td class="num heatmap-cell" style="background:#fef3c7;">1,500</td><td class="num">10,340</td></tr>
-          <tr><td>天ぷら-1</td><td class="num heatmap-cell" style="background:#fef3c7;">1,560</td><td class="num heatmap-cell" style="background:#fef3c7;">1,620</td><td class="num heatmap-cell" style="background:#fef3c7;">1,400</td><td class="num heatmap-cell" style="background:#fef3c7;">1,200</td><td class="num heatmap-cell" style="background:#fefce8;">1,000</td><td class="num heatmap-cell" style="background:#fefce8;">900</td><td class="num heatmap-cell" style="background:#fef3c7;">1,300</td><td class="num">8,980</td></tr>
-          <tr><td>素材-1</td><td class="num heatmap-cell" style="background:#fefce8;">1,060</td><td class="num heatmap-cell" style="background:#fefce8;">1,120</td><td class="num heatmap-cell" style="background:#fefce8;">980</td><td class="num heatmap-cell" style="background:#fefce8;">880</td><td class="num heatmap-cell" style="background:#fefce8;">800</td><td class="num heatmap-cell" style="background:#fefce8;">720</td><td class="num heatmap-cell" style="background:#fefce8;">920</td><td class="num">6,480</td></tr>
-          <tr><td>夏季限定-1</td><td class="num heatmap-cell" style="background:#fde68a;">1,280</td><td class="num heatmap-cell" style="background:#fde68a;">1,350</td><td class="num heatmap-cell" style="background:#fef3c7;">920</td><td class="num heatmap-cell" style="background:#fefce8;">600</td><td class="num heatmap-cell" style="background:#fefce8;">500</td><td class="num heatmap-cell" style="background:#fefce8;">450</td><td class="num heatmap-cell" style="background:#fef3c7;">820</td><td class="num">5,920</td></tr>
-          <tr><td>おでん-1</td><td class="num heatmap-cell" style="background:#fefce8;">180</td><td class="num heatmap-cell" style="background:#fefce8;">160</td><td class="num heatmap-cell" style="background:#fefce8;">140</td><td class="num heatmap-cell" style="background:#fefce8;">220</td><td class="num heatmap-cell" style="background:#fefce8;">280</td><td class="num heatmap-cell" style="background:#fefce8;">320</td><td class="num heatmap-cell" style="background:#fefce8;">200</td><td class="num">1,500</td></tr>
-          <tr><td>弁当向-1</td><td class="num heatmap-cell" style="background:#fefce8;">650</td><td class="num heatmap-cell" style="background:#fefce8;">680</td><td class="num heatmap-cell" style="background:#fefce8;">620</td><td class="num heatmap-cell" style="background:#fefce8;">580</td><td class="num heatmap-cell" style="background:#fefce8;">520</td><td class="num heatmap-cell" style="background:#fefce8;">480</td><td class="num heatmap-cell" style="background:#fefce8;">600</td><td class="num">4,130</td></tr>
+          <tr><td>ちくわ-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>さつま揚-1</td><td class="num heatmap-cell" style="background:#fcd34d;">—</td><td class="num heatmap-cell" style="background:#fcd34d;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num">—</td></tr>
+          <tr><td>さつま揚-2</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>串商品-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>串商品-2</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>新食感-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>天ぷら-1</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>素材-1</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>夏季限定-1</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fde68a;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fef3c7;">—</td><td class="num">—</td></tr>
+          <tr><td>おでん-1</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
+          <tr><td>弁当向-1</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num heatmap-cell" style="background:#fefce8;">—</td><td class="num">—</td></tr>
           <tr style="font-weight:600;background:#f9fafb;"><td>計</td><td class="num">16,970</td><td class="num">17,730</td><td class="num">14,340</td><td class="num">12,260</td><td class="num">11,090</td><td class="num">10,030</td><td class="num">13,720</td><td class="num">96,140</td></tr>
         </tbody>
       </table>
@@ -2571,9 +2571,9 @@ PAGES.production = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">工場別 製造割当</div></div><canvas id="prFactoryChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">工場別 製造能力</div>
-      <div class="metric-row"><span class="metric-label">関東工場</span><span class="metric-value">日産 50,000個 (稼働率82%)</span></div>
-      <div class="metric-row"><span class="metric-label">東海工場</span><span class="metric-value">日産 32,000個 (稼働率76%)</span></div>
-      <div class="metric-row"><span class="metric-label">合計</span><span class="metric-value">日産 82,000個</span></div>
+      <div class="metric-row"><span class="metric-label">関東工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">東海工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">合計</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card" style="padding:0;">
@@ -2581,12 +2581,12 @@ PAGES.production = () => `
     <table>
       <thead><tr><th>商品</th><th class="num">関東工場</th><th class="num">東海工場</th><th class="num">合計</th><th>主担当</th></tr></thead>
       <tbody>
-        <tr><td>カネスエ磯辺揚げ</td><td class="num">1,420</td><td class="num">800</td><td class="num">2,220</td><td>関東</td></tr>
-        <tr><td>ゲンキーいか</td><td class="num">2,420</td><td class="num">1,200</td><td class="num">3,620</td><td>関東</td></tr>
-        <tr><td>もっち餅(角型)4枚</td><td class="num">1,820</td><td class="num">900</td><td class="num">2,720</td><td>関東</td></tr>
-        <tr><td>串王3本 いか</td><td class="num">1,360</td><td class="num">0</td><td class="num">1,360</td><td>関東のみ</td></tr>
-        <tr><td>素材をいただく 生姜</td><td class="num">580</td><td class="num">320</td><td class="num">900</td><td>関東</td></tr>
-        <tr><td>韓国風さつま揚</td><td class="num">0</td><td class="num">320</td><td class="num">320</td><td>東海のみ</td></tr>
+        <tr><td>カネスエ磯辺揚げ</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>ゲンキーいか</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>もっち餅(角型)4枚</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>串王3本 いか</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>素材をいただく 生姜</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
+        <tr><td>韓国風さつま揚</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -2601,11 +2601,11 @@ PAGES.production = () => `
     <table>
       <thead><tr><th>計画日</th><th class="num">予定数</th><th class="num">実績</th><th class="num">差異</th><th class="num">廃棄率</th><th>承認者</th><th>状態</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td>2026/5/25</td><td class="num">37,800</td><td class="num">38,420</td><td class="num up">+1.6%</td><td class="num">3.1%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/24</td><td class="num">36,200</td><td class="num">36,900</td><td class="num up">+1.9%</td><td class="num">3.4%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/23</td><td class="num">37,500</td><td class="num">37,800</td><td class="num up">+0.8%</td><td class="num">3.0%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/22</td><td class="num">38,000</td><td class="num">37,200</td><td class="num down">-2.1%</td><td class="num">3.5%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>2026/5/21</td><td class="num">38,200</td><td class="num">37,500</td><td class="num down">-1.8%</td><td class="num">3.4%</td><td>田中</td><td><span class="badge badge-green">完了</span></td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num up">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num up">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num up">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num down">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td class="num">—</td><td class="num">—</td><td class="num down">—</td><td class="num">—</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -2821,7 +2821,7 @@ PAGES.procurement = () => `
 PAGES.disposal = () => `
 <div class="page-scope">
 <div class="page-title">
-  <div><h2>廃棄管理</h2><div class="meta">揚物ライン日報（5/21-5/25）｜月累計 ¥320万</div></div>
+  <div><h2>廃棄管理</h2><div class="meta">揚物ライン日報（5/21-5/25）｜月累計 —</div></div>
   <div class="page-actions">
     <button class="btn btn-secondary">CSV出力</button>
     <button class="btn btn-primary" onclick="document.getElementById('newDisposal').scrollIntoView({behavior:'smooth'})">新規廃棄登録</button>
@@ -2879,11 +2879,11 @@ PAGES.disposal = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">廃棄原因の内訳（今月）</div></div><canvas id="dpCauseChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">原因別 累計金額</div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-red">過剰生産</span></span><span class="metric-value">¥58万 (47%)</span></div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-blue">需要外れ</span></span><span class="metric-value">¥36万 (29%)</span></div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-yellow">賞味期限切れ</span></span><span class="metric-value">¥22万 (18%)</span></div>
-      <div class="metric-row"><span class="metric-label"><span class="badge badge-purple">天候変動</span></span><span class="metric-value">¥6万 (5%)</span></div>
-      <div class="metric-row"><span class="metric-label">製造不良</span><span class="metric-value">¥2万 (1%)</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-red">過剰生産</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-blue">需要外れ</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-yellow">賞味期限切れ</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label"><span class="badge badge-purple">天候変動</span></span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">製造不良</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card"><div class="card-header"><div class="card-title">廃棄金額 推移（6ヶ月）</div></div><canvas id="dpTrendChart" height="180"></canvas></div>
@@ -3063,10 +3063,10 @@ PAGES.foodloss = () => `
 <div class="card">
   <div class="card-header"><div class="card-title">削減効果シミュレーション</div></div>
   <div style="padding:10px;background:#f9fafb;border-radius:4px;font-size:11px;line-height:1.8;">
-    <strong>現状（AI導入前ベースライン）:</strong> 月間廃棄額 ¥310万｜年間 ¥3,720万<br>
-    <strong>現在（AI導入半年）:</strong> 月間廃棄額 ¥124万（▼60%）｜年換算 ¥1,488万<br>
-    <strong>削減効果:</strong> <span style="color:#10b981;font-weight:600;">年間 ¥2,232万削減</span> ｜投資¥1,000万→投資回収9.2ヶ月<br>
-    <strong>1年後目標:</strong> 廃棄率1.5%（現在2.8%）｜月間¥58万まで削減
+    <strong>現状（AI導入前ベースライン）:</strong> 月間廃棄額 —｜年間 —<br>
+    <strong>現在（AI導入半年）:</strong> 月間廃棄額 —（▼60%）｜年換算 —<br>
+    <strong>削減効果:</strong> <span style="color:#10b981;font-weight:600;">年間 —削減</span> ｜投資—→投資回収9.2ヶ月<br>
+    <strong>1年後目標:</strong> 廃棄率1.5%（現在2.8%）｜月間—まで削減
   </div>
 </div>
 `;
@@ -3115,21 +3115,21 @@ PAGES.execreport = () => `
 </div>
 <div class="card">
   <div class="card-header"><div class="card-title">経営インパクト サマリー</div></div>
-  <div class="metric-row"><span class="metric-label">AI導入開始</span><span class="metric-value">2025年12月</span></div>
-  <div class="metric-row"><span class="metric-label">対象範囲</span><span class="metric-value">関東工場・主要50品目</span></div>
-  <div class="metric-row"><span class="metric-label">フードロス削減（半年）</span><span class="metric-value up">¥186万</span></div>
-  <div class="metric-row"><span class="metric-label">人件費削減（製造計画）</span><span class="metric-value up">¥85万</span></div>
-  <div class="metric-row"><span class="metric-label">原料費削減（過剰仕入回避）</span><span class="metric-value up">¥98万</span></div>
-  <div class="metric-row"><span class="metric-label">在庫保管コスト削減</span><span class="metric-value up">¥42万</span></div>
-  <div class="metric-row"><span class="metric-label">累計効果（半年）</span><span class="metric-value up" style="font-size:14px;">¥411万</span></div>
-  <div class="metric-row"><span class="metric-label">投資額</span><span class="metric-value">¥1,000万</span></div>
-  <div class="metric-row"><span class="metric-label">予想投資回収</span><span class="metric-value">9.2ヶ月（あと3ヶ月）</span></div>
+  <div class="metric-row"><span class="metric-label">AI導入開始</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">対象範囲</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">フードロス削減（半年）</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">人件費削減（製造計画）</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">原料費削減（過剰仕入回避）</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">在庫保管コスト削減</span><span class="metric-value up">—</span></div>
+  <div class="metric-row"><span class="metric-label">累計効果（半年）</span><span class="metric-value up" style="font-size:14px;">—</span></div>
+  <div class="metric-row"><span class="metric-label">投資額</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">予想投資回収</span><span class="metric-value">—</span></div>
 </div>
 <div class="card">
   <div class="card-header"><div class="card-title">SDGs貢献度</div></div>
   <div class="metric-row"><span class="metric-label">目標12.3「食品ロス半減」</span><span class="metric-value up">▲ 60%達成</span></div>
-  <div class="metric-row"><span class="metric-label">CO2換算削減量</span><span class="metric-value">2.8 t-CO2 (年換算33.6t)</span></div>
-  <div class="metric-row"><span class="metric-label">廃棄食品削減量</span><span class="metric-value">1,820 kg/月</span></div>
+  <div class="metric-row"><span class="metric-label">CO2換算削減量</span><span class="metric-value">—</span></div>
+  <div class="metric-row"><span class="metric-label">廃棄食品削減量</span><span class="metric-value">—</span></div>
 </div>
 `;
 
@@ -3735,11 +3735,11 @@ PAGES.dataImport = () => `
     <table>
       <thead><tr><th>行</th><th>日付</th><th>商品</th><th class="num">数量</th><th class="num">金額</th><th>取引先</th><th>状態</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>2026/5/20</td><td>カネスエ磯辺揚げ</td><td class="num">1,200</td><td class="num">—</td><td>ゲンキー（Genky）</td><td><span class="badge badge-green">OK</span></td></tr>
-        <tr><td>2</td><td>2026/5/20</td><td>ゲンキーいか</td><td class="num">850</td><td class="num">—</td><td>ゲンキー（Genky）</td><td><span class="badge badge-green">OK</span></td></tr>
-        <tr><td>3</td><td>2026/5/20</td><td>串王3本 いか</td><td class="num">620</td><td class="num">—</td><td>カネスエ</td><td><span class="badge badge-green">OK</span></td></tr>
-        <tr class="warn"><td>4</td><td>2026/5/20</td><td>もっち餅(角型)4枚</td><td class="num">??</td><td class="num">—</td><td>平和堂</td><td><span class="badge badge-yellow">数量欠損</span></td></tr>
-        <tr class="danger"><td>5</td><td>2026/5/20</td><td>UNKNOWN</td><td class="num">200</td><td class="num">—</td><td>ゲンキー（Genky）</td><td><span class="badge badge-red">商品コード不正</span></td></tr>
+        <tr><td>—</td><td>—</td><td>カネスエ磯辺揚げ</td><td class="num">—</td><td class="num">—</td><td>ゲンキー（Genky）</td><td><span class="badge badge-green">OK</span></td></tr>
+        <tr><td>—</td><td>—</td><td>ゲンキーいか</td><td class="num">—</td><td class="num">—</td><td>ゲンキー（Genky）</td><td><span class="badge badge-green">OK</span></td></tr>
+        <tr><td>—</td><td>—</td><td>串王3本 いか</td><td class="num">—</td><td class="num">—</td><td>カネスエ</td><td><span class="badge badge-green">OK</span></td></tr>
+        <tr class="warn"><td>—</td><td>—</td><td>もっち餅(角型)4枚</td><td class="num">??</td><td class="num">—</td><td>平和堂</td><td><span class="badge badge-yellow">数量欠損</span></td></tr>
+        <tr class="danger"><td>—</td><td>—</td><td>UNKNOWN</td><td class="num">—</td><td class="num">—</td><td>ゲンキー（Genky）</td><td><span class="badge badge-red">商品コード不正</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -3771,11 +3771,11 @@ PAGES.dataImport = () => `
     <table>
       <thead><tr><th>連携先</th><th>種別</th><th>状態</th><th>最終同期</th><th>次回</th><th>取得件数(本日)</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td>販売管理システム</td><td>API</td><td><span class="badge badge-green">接続中</span></td><td>09:20</td><td>09:35</td><td class="num">2,840</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>仕入管理システム</td><td>API</td><td><span class="badge badge-green">接続中</span></td><td>09:15</td><td>09:30</td><td class="num">42</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>気象庁API</td><td>外部API</td><td><span class="badge badge-green">接続中</span></td><td>08:00</td><td>09:00</td><td class="num">168</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>直営店POS（4店舗）</td><td>API</td><td><span class="badge badge-green">接続中</span></td><td>09:24</td><td>リアルタイム</td><td class="num">385</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>会計システム</td><td>API</td><td><span class="badge badge-gray">未接続</span></td><td>-</td><td>-</td><td class="num">-</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>販売管理システム</td><td>API</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>—</td><td class="num">—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>仕入管理システム</td><td>API</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>—</td><td class="num">—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>気象庁API</td><td>外部API</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>—</td><td class="num">—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>直営店POS（4店舗）</td><td>API</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>リアルタイム</td><td class="num">—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>会計システム</td><td>API</td><td><span class="badge badge-gray">未接続</span></td><td>—</td><td>—</td><td class="num">—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -3785,11 +3785,11 @@ PAGES.dataImport = () => `
     <table>
       <thead><tr><th>取込日時</th><th>種別</th><th>ソース</th><th class="num">件数</th><th class="num">成功</th><th class="num">エラー</th><th>担当</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td>5/26 09:20</td><td>販売実績</td><td>API同期</td><td class="num">2,840</td><td class="num">2,840</td><td class="num">0</td><td>システム</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>5/26 08:00</td><td>天候</td><td>気象庁API</td><td class="num">168</td><td class="num">168</td><td class="num">0</td><td>システム</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>5/25 18:40</td><td>在庫棚卸</td><td>手入力</td><td class="num">287</td><td class="num">285</td><td class="num">2</td><td>佐藤</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>5/25 09:00</td><td>仕入実績</td><td>CSV取込</td><td class="num">42</td><td class="num">42</td><td class="num">0</td><td>鈴木</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>5/24 23:00</td><td>販売実績</td><td>API同期</td><td class="num">38,420</td><td class="num">38,420</td><td class="num">0</td><td>システム</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td>販売実績</td><td>API同期</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>システム</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td>天候</td><td>気象庁API</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>システム</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td>在庫棚卸</td><td>手入力</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>佐藤</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td>仕入実績</td><td>CSV取込</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>鈴木</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>—</td><td>販売実績</td><td>API同期</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>システム</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -3815,7 +3815,7 @@ PAGES.dataCheck = () => `
       <tr class="warn"><td><span class="badge badge-yellow">欠損値</span></td><td>販売実績</td><td>2026/5/20 行120</td><td>もっち餅の数量が空欄</td><td>担当者に確認</td><td><button class="btn btn-secondary btn-xs">修正</button></td></tr>
       <tr class="warn"><td><span class="badge badge-yellow">欠損値</span></td><td>在庫データ</td><td>5/24棚卸 行85</td><td>「素材をいただく 枝豆」の棚卸数なし</td><td>再入力</td><td><button class="btn btn-secondary btn-xs">修正</button></td></tr>
       <tr class="danger"><td><span class="badge badge-red">異常値</span></td><td>販売実績</td><td>2026/5/22 行42</td><td>串王 いか の販売数 99,999個（通常1,200個前後）</td><td>誤入力の可能性</td><td><button class="btn btn-secondary btn-xs">修正</button></td></tr>
-      <tr><td><span class="badge badge-blue">重複</span></td><td>仕入実績</td><td>2026/5/19</td><td>白身魚すり身の発注書が2件登録（同金額）</td><td>重複削除</td><td><button class="btn btn-secondary btn-xs">統合</button></td></tr>
+      <tr><td><span class="badge badge-blue">重複</span></td><td>仕入実績</td><td>—</td><td>白身魚すり身の発注書が2件登録（同金額）</td><td>重複削除</td><td><button class="btn btn-secondary btn-xs">統合</button></td></tr>
     </tbody>
   </table>
 </div>
@@ -3839,16 +3839,16 @@ PAGES.users = () => `
   <table>
     <thead><tr><th>名前</th><th>メール</th><th>所属</th><th>権限</th><th>最終ログイン</th><th>状態</th><th>操作</th></tr></thead>
     <tbody>
-      <tr><td>梶原</td><td>kajiwara@kanesada.com</td><td>本社 管理部</td><td><span class="badge badge-purple">管理者</span></td><td>2026/5/26 09:24</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>田中 製造部長</td><td>tanaka@kanesada.com</td><td>関東工場</td><td><span class="badge badge-blue">工場責任者</span></td><td>2026/5/26 08:45</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>山本 製造課長</td><td>yamamoto@kanesada.com</td><td>関東工場</td><td><span class="badge badge-blue">製造担当</span></td><td>2026/5/26 08:30</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>佐藤 物流主任</td><td>sato@kanesada.com</td><td>物流センター</td><td><span class="badge badge-blue">物流担当</span></td><td>2026/5/25 17:30</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>鈴木 仕入担当</td><td>suzuki@kanesada.com</td><td>本社 仕入部</td><td><span class="badge badge-blue">採購担当</span></td><td>2026/5/26 09:05</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>高橋 営業部長</td><td>takahashi@kanesada.com</td><td>本社 営業部</td><td><span class="badge badge-blue">営業担当</span></td><td>2026/5/25 18:10</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>伊藤 経営企画</td><td>ito@kanesada.com</td><td>本社 経営企画</td><td><span class="badge badge-gray">閲覧者</span></td><td>2026/5/23 10:00</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>渡辺 品質管理</td><td>watanabe@kanesada.com</td><td>本社 品管部</td><td><span class="badge badge-blue">品管担当</span></td><td>2026/5/25 16:45</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>中村 直営店</td><td>nakamura@kanesada.com</td><td>ねり伝 本店</td><td><span class="badge badge-blue">店長</span></td><td>2026/5/26 08:50</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>小林 役員</td><td>kobayashi@kanesada.com</td><td>本社 役員</td><td><span class="badge badge-gray">閲覧者</span></td><td>2026/5/19 11:00</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>梶原</td><td>kajiwara@kanesada.com</td><td>本社 管理部</td><td><span class="badge badge-purple">管理者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>田中 製造部長</td><td>tanaka@kanesada.com</td><td>関東工場</td><td><span class="badge badge-blue">工場責任者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>山本 製造課長</td><td>yamamoto@kanesada.com</td><td>関東工場</td><td><span class="badge badge-blue">製造担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>佐藤 物流主任</td><td>sato@kanesada.com</td><td>物流センター</td><td><span class="badge badge-blue">物流担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>鈴木 仕入担当</td><td>suzuki@kanesada.com</td><td>本社 仕入部</td><td><span class="badge badge-blue">採購担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>高橋 営業部長</td><td>takahashi@kanesada.com</td><td>本社 営業部</td><td><span class="badge badge-blue">営業担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>伊藤 経営企画</td><td>ito@kanesada.com</td><td>本社 経営企画</td><td><span class="badge badge-gray">閲覧者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>渡辺 品質管理</td><td>watanabe@kanesada.com</td><td>本社 品管部</td><td><span class="badge badge-blue">品管担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>中村 直営店</td><td>nakamura@kanesada.com</td><td>ねり伝 本店</td><td><span class="badge badge-blue">店長</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>小林 役員</td><td>kobayashi@kanesada.com</td><td>本社 役員</td><td><span class="badge badge-gray">閲覧者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
     </tbody>
   </table>
 </div>
@@ -3910,13 +3910,13 @@ PAGES.settings = () => `
 <div id="st-general" class="tab-content active">
   <div class="card">
     <div class="card-header"><div class="card-title">会社情報</div></div>
-    <div class="metric-row"><span class="metric-label">会社名</span><span class="metric-value">株式会社かね貞</span></div>
-    <div class="metric-row"><span class="metric-label">事業内容</span><span class="metric-value">水産練り製品 製造・販売</span></div>
-    <div class="metric-row"><span class="metric-label">取引先数</span><span class="metric-value">412社</span></div>
-    <div class="metric-row"><span class="metric-label">商品数</span><span class="metric-value">287品目</span></div>
-    <div class="metric-row"><span class="metric-label">原材料数</span><span class="metric-value">82種類</span></div>
-    <div class="metric-row"><span class="metric-label">工場</span><span class="metric-value">関東工場、東海工場</span></div>
-    <div class="metric-row"><span class="metric-label">物流センター</span><span class="metric-value">関東、東海</span></div>
+    <div class="metric-row"><span class="metric-label">会社名</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">事業内容</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">取引先数</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">商品数</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">原材料数</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">工場</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">物流センター</span><span class="metric-value">—</span></div>
   </div>
 </div>
 <div id="st-integ" class="tab-content">
@@ -3924,11 +3924,11 @@ PAGES.settings = () => `
     <table>
       <thead><tr><th>システム</th><th>状態</th><th>最終同期</th><th>同期間隔</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td>販売管理システム</td><td><span class="badge badge-green">接続中</span></td><td>09:20</td><td>15分</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>仕入管理システム</td><td><span class="badge badge-green">接続中</span></td><td>09:15</td><td>15分</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>気象庁API</td><td><span class="badge badge-green">接続中</span></td><td>08:00</td><td>1時間</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>直営店POS</td><td><span class="badge badge-green">接続中</span></td><td>09:24</td><td>リアルタイム</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
-        <tr><td>会計システム</td><td><span class="badge badge-gray">未接続</span></td><td>-</td><td>-</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>販売管理システム</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>仕入管理システム</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>気象庁API</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>1時間</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>直営店POS</td><td><span class="badge badge-green">接続中</span></td><td>—</td><td>リアルタイム</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
+        <tr><td>会計システム</td><td><span class="badge badge-gray">未接続</span></td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">設定</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -3936,13 +3936,13 @@ PAGES.settings = () => `
 <div id="st-ai" class="tab-content">
   <div class="card">
     <div class="card-header"><div class="card-title">AIモデル設定</div></div>
-    <div class="metric-row"><span class="metric-label">予測モデル</span><span class="metric-value">LightGBM + Prophet アンサンブル</span></div>
-    <div class="metric-row"><span class="metric-label">学習頻度</span><span class="metric-value">日次 03:00 JST</span></div>
-    <div class="metric-row"><span class="metric-label">最終学習</span><span class="metric-value">2026/5/26 03:00</span></div>
-    <div class="metric-row"><span class="metric-label">学習データ期間</span><span class="metric-value">3年</span></div>
-    <div class="metric-row"><span class="metric-label">対象品目数</span><span class="metric-value">287</span></div>
-    <div class="metric-row"><span class="metric-label">現行精度（全体MAPE）</span><span class="metric-value">87.4%</span></div>
-    <div class="metric-row"><span class="metric-label">特徴量</span><span class="metric-value">過去実績、曜日、祝日、気温、降水、湿度、季節、取引先パターン</span></div>
+    <div class="metric-row"><span class="metric-label">予測モデル</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">学習頻度</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">最終学習</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">学習データ期間</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">対象品目数</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">現行精度（全体MAPE）</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">特徴量</span><span class="metric-value">—</span></div>
     <button class="btn btn-secondary" style="margin-top:10px;" onclick="showToast('再学習を開始しました')">手動再学習</button>
   </div>
 </div>
@@ -3951,15 +3951,15 @@ PAGES.settings = () => `
     <table>
       <thead><tr><th>通知種別</th><th>システム内</th><th>メール</th><th>閾値</th></tr></thead>
       <tbody>
-        <tr><td>需要急増アラート</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>+15%以上</td></tr>
-        <tr><td>需要減少アラート</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>-15%以下</td></tr>
-        <tr><td>在庫過多警告</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>適正在庫の200%</td></tr>
-        <tr><td>在庫不足警告</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>適正在庫の50%以下</td></tr>
+        <tr><td>需要急増アラート</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>—</td></tr>
+        <tr><td>需要減少アラート</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>—</td></tr>
+        <tr><td>在庫過多警告</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>—</td></tr>
+        <tr><td>在庫不足警告</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>—</td></tr>
         <tr><td>賞味期限間近</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>48時間前</td></tr>
         <tr><td>材料不足警告</td><td><input type="checkbox" checked></td><td><input type="checkbox" checked></td><td>安全在庫以下</td></tr>
         <tr><td>天候変動アラート</td><td><input type="checkbox" checked></td><td><input type="checkbox"></td><td>気温±3℃以上</td></tr>
         <tr><td>原料発注リマインド</td><td><input type="checkbox" checked></td><td><input type="checkbox"></td><td>承認待ち24時間後</td></tr>
-        <tr><td>予測精度低下</td><td><input type="checkbox" checked></td><td><input type="checkbox"></td><td>MAPE 80%未満</td></tr>
+        <tr><td>予測精度低下</td><td><input type="checkbox" checked></td><td><input type="checkbox"></td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -3967,10 +3967,10 @@ PAGES.settings = () => `
 <div id="st-backup" class="tab-content">
   <div class="card">
     <div class="card-header"><div class="card-title">バックアップ設定</div></div>
-    <div class="metric-row"><span class="metric-label">自動バックアップ</span><span class="metric-value">毎日 02:00</span></div>
-    <div class="metric-row"><span class="metric-label">保管期間</span><span class="metric-value">90日</span></div>
-    <div class="metric-row"><span class="metric-label">最終バックアップ</span><span class="metric-value">2026/5/26 02:00（成功）</span></div>
-    <div class="metric-row"><span class="metric-label">バックアップサイズ</span><span class="metric-value">2.4 GB</span></div>
+    <div class="metric-row"><span class="metric-label">自動バックアップ</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">保管期間</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">最終バックアップ</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">バックアップサイズ</span><span class="metric-value">—</span></div>
     <button class="btn btn-secondary" style="margin-top:10px;">今すぐバックアップ</button>
     <button class="btn btn-secondary" style="margin-top:10px;margin-left:6px;">復元</button>
   </div>
@@ -3988,13 +3988,13 @@ PAGES.reports = () => `
   <table>
     <thead><tr><th>レポート名</th><th>頻度</th><th>配信先</th><th>最終生成</th><th>形式</th><th>操作</th></tr></thead>
     <tbody>
-      <tr><td>月次フードロスサマリー</td><td>毎月1日</td><td>経営層・管理部</td><td>2026/5/1 06:00</td><td>PDF</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>週次需要予測精度</td><td>毎週月曜 08:00</td><td>本社・工場責任者</td><td>2026/5/25 08:00</td><td>PDF</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>取引先別売上分析</td><td>毎月15日</td><td>営業部</td><td>2026/5/15 06:00</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>原料コスト分析</td><td>毎月1日</td><td>仕入部</td><td>2026/5/1 06:00</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>日次製造実績</td><td>毎日 23:00</td><td>工場責任者</td><td>2026/5/25 23:00</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>在庫日報</td><td>毎日 18:30</td><td>物流センター</td><td>2026/5/25 18:30</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>廃棄レポート</td><td>毎月1日</td><td>本社・工場・経営</td><td>2026/5/1 06:00</td><td>PDF</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>月次フードロスサマリー</td><td>毎月1日</td><td>経営層・管理部</td><td>—</td><td>PDF</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>週次需要予測精度</td><td>毎週月曜 08:00</td><td>本社・工場責任者</td><td>—</td><td>PDF</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>取引先別売上分析</td><td>毎月15日</td><td>営業部</td><td>—</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>原料コスト分析</td><td>毎月1日</td><td>仕入部</td><td>—</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>日次製造実績</td><td>毎日 23:00</td><td>工場責任者</td><td>—</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>在庫日報</td><td>毎日 18:30</td><td>物流センター</td><td>—</td><td>Excel</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>廃棄レポート</td><td>毎月1日</td><td>本社・工場・経営</td><td>—</td><td>PDF</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
     </tbody>
   </table>
 </div>
@@ -4003,9 +4003,9 @@ PAGES.reports = () => `
   <table>
     <thead><tr><th>レポート名</th><th>作成者</th><th>作成日</th><th>最終実行</th><th>操作</th></tr></thead>
     <tbody>
-      <tr><td>関東工場 ライン別稼働率分析</td><td>田中</td><td>2026/3/12</td><td>2026/5/24</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>夏季限定商品 効果分析</td><td>高橋</td><td>2026/4/05</td><td>2026/5/20</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
-      <tr><td>直営店4店舗 売上比較</td><td>中村</td><td>2026/4/22</td><td>2026/5/18</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>関東工場 ライン別稼働率分析</td><td>田中</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>夏季限定商品 効果分析</td><td>高橋</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>直営店4店舗 売上比較</td><td>中村</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
     </tbody>
   </table>
 </div>
@@ -4380,7 +4380,7 @@ function detailDisposal(c) {
     sec('原因分析',
       '<div style="padding:8px;background:#fffbeb;border:1px solid #fde68a;border-radius:4px;font-size:11px;line-height:1.6;">' +
       `この廃棄は<strong>${c[4]||''}</strong>に分類されます。<br>` +
-      '同商品の今月廃棄: 計428個（¥17万）。AIが需要予測モデルを再学習中。</div>'),
+      '同商品の今月廃棄: 計428個（—）。AIが需要予測モデルを再学習中。</div>'),
     {footer:`<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>
              <button class="btn btn-primary" onclick="closeModal();openModal('編集','フォームを編集します')">編集</button>`}
   );
