@@ -1096,12 +1096,14 @@ document.addEventListener('click', function(e){
   const cells = [...tr.children].map(td => td.textContent.trim());
   let rows = '';
   cells.forEach((c, i) => {
-    if (!c) return;
-    const h = (heads[i] && !/操作|^$/.test(heads[i])) ? heads[i] : ('項目' + (i + 1));
-    rows += '<tr><td style="color:#64748b;padding:4px 14px 4px 0;white-space:nowrap;vertical-align:top;">' + h + '</td><td style="padding:4px 0;font-weight:500;">' + c + '</td></tr>';
+    if (heads[i] && /操作/.test(heads[i])) return;
+    if (c === '' && (!heads[i])) return;
+    const h = (heads[i] && !/^$/.test(heads[i])) ? heads[i] : ('項目' + (i + 1));
+    const val = c.replace(/"/g, '&quot;');
+    rows += '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #eef1f5;"><span style="color:#64748b;font-size:12px;">' + h + '</span><input value="' + val + '" style="width:56%;text-align:right;border:1px solid #e7eaf0;border-radius:4px;padding:3px 7px;font-size:12px;"></div>';
   });
   if (!rows) return;
-  openModal('明細', '<table style="font-size:12px;width:100%;">' + rows + '</table>');
+  showRichModal('明細編集', '<div>' + rows + '</div>', {footer:'<button class="btn btn-secondary" onclick="closeModal()">閉じる</button> <button class="btn btn-primary" onclick="closeModal();showToast(\'保存しました\',\'success\')">保存</button>'});
 });
 
 // ===== 安全在庫設定：品種追加 =====
@@ -1196,6 +1198,15 @@ function updateWxCorr(){
   showToast('表示商品を変更しました');
 }
 
+
+const UTIL_LINES = {'2F竹輪':[95.5,95.2,98.2,89.5,91.0],'2F釜揚':[100.0,96.7,97.8,98.9,null]};
+function updateDashUtil(line){
+  if(!charts.dashAcc) return;
+  charts.dashAcc.data.datasets[0].data = UTIL_LINES[line]||[];
+  charts.dashAcc.data.datasets[0].label = line+'稼働率(%)';
+  charts.dashAcc.update();
+}
+
 function openModal(title, html) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalBody').innerHTML = html;
@@ -1284,7 +1295,7 @@ PAGES.dashboard = () => `
     <canvas id="dashStock" height="140"></canvas>
   </div>
   <div class="card">
-    <div class="card-header"><div class="card-title">竹輪 日別稼働率（6月日報）</div></div>
+    <div class="card-header"><div class="card-title">ライン別 日別稼働率（6月日報）</div><select onchange="updateDashUtil(this.value)" style="font-size:11px;"><option>2F竹輪</option><option>2F釜揚</option></select></div>
     <canvas id="dashAcc" height="140"></canvas>
   </div>
 </div>
@@ -4101,13 +4112,13 @@ PAGES.settings = () => `
 <div id="st-general" class="tab-content active">
   <div class="card">
     <div class="card-header"><div class="card-title">会社情報</div></div>
-    <div class="metric-row"><span class="metric-label">会社名</span><span class="metric-value">—</span></div>
-    <div class="metric-row"><span class="metric-label">事業内容</span><span class="metric-value">—</span></div>
-    <div class="metric-row"><span class="metric-label">取引先数</span><span class="metric-value">—</span></div>
-    <div class="metric-row"><span class="metric-label">商品数</span><span class="metric-value">—</span></div>
-    <div class="metric-row"><span class="metric-label">原材料数</span><span class="metric-value">—</span></div>
-    <div class="metric-row"><span class="metric-label">工場</span><span class="metric-value">—</span></div>
-    <div class="metric-row"><span class="metric-label">物流センター</span><span class="metric-value">—</span></div>
+    <div class="metric-row"><span class="metric-label">会社名</span><span class="metric-value">株式会社かね貞</span></div>
+    <div class="metric-row"><span class="metric-label">事業内容</span><span class="metric-value">練り製品（ちくわ・揚物・かまぼこ・おでん）製造</span></div>
+    <div class="metric-row"><span class="metric-label">取引先数</span><span class="metric-value">29社</span></div>
+    <div class="metric-row"><span class="metric-label">商品数</span><span class="metric-value">229品</span></div>
+    <div class="metric-row"><span class="metric-label">原材料数</span><span class="metric-value">76品</span></div>
+    <div class="metric-row"><span class="metric-label">工場</span><span class="metric-value">本社工場（愛知県知多郡武豊町）</span></div>
+    <div class="metric-row"><span class="metric-label">製造ライン</span><span class="metric-value">竹輪/揚物/釜揚/蒲鉾/配合室/荷受/野菜処理</span></div>
   </div>
 </div>
 <div id="st-integ" class="tab-content">
@@ -4610,6 +4621,11 @@ function detailCustomer(c) {
   }, 60);
 }
 
+function _editSel(label, value, opts){
+  var o = opts.map(function(x){ return '<option'+(String(x)===String(value)?' selected':'')+'>'+x+'</option>'; }).join('');
+  if (opts.indexOf(value)<0 && value && value!=='—') o = '<option selected>'+value+'</option>'+o;
+  return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #eef1f5;"><span style="color:#64748b;font-size:12px;">'+label+'</span><select style="width:165px;border:1px solid #e7eaf0;border-radius:4px;padding:3px 6px;font-size:12px;">'+o+'</select></div>';
+}
 function _editRow(label, v){
   var val = (v==null?'':String(v)).replace(/"/g,'&quot;');
   return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #eef1f5;">'
@@ -4623,14 +4639,14 @@ function detailProductMaster(c) {
     `<div class="detail-grid">
       <div>${sec('基本情報',
         _editRow('商品名', c[1]) + _editRow('商品コード', c[0]) +
-        _editRow('カテゴリー', c[2]) + _editRow('重量', c[3]) +
-        _editRow('状態', c[8]))}
+        _editSel('カテゴリー', c[2], ['揚物・天ぷら','かじりっこ','串商品','新食感','おつまみ','おでん','竹輪(仕掛品)','釜揚・蒲鉾(仕掛品)']) + _editRow('重量', c[3]) +
+        _editSel('状態', c[8], ['稼働','休止','仕掛品']))}
       ${sec('価格・原価（任意）',
         _editRow('原価', '') + _editRow('標準価格', '') + _editRow('JAN', ''))}
       </div>
       <div>${sec('製造情報',
         _editRow('生産能力(P/min)', c[4]) + _editRow('C入数', c[5]) +
-        _editRow('当日見込(ケース)', c[6]) + _editRow('製造ライン', c[7]))}
+        _editRow('当日見込(ケース)', c[6]) + _editSel('製造ライン', c[7], ['4F揚物','2F竹輪','2F釜揚','4F蒲鉾','1F配合室','1F荷受け','野菜処理室']))}
       ${sec('賞味期限・リードタイム（任意）',
         _editRow('賞味期限日数', '') + _editRow('製造LT(日)', ''))}
       </div>
@@ -4649,7 +4665,7 @@ function detailCustomerMaster(c) {
     sec('基本情報',
       _editRow('取引先名', c[1]) + _editRow('コード', c[0]) + _editRow('業態', c[2]) +
       _editRow('地域', c[3]) + _editRow('担当営業', c[4]) + _editRow('締日', c[5]) +
-      _editRow('支払条件', c[6]) + _editRow('取引開始', c[7]) + _editRow('状態', c[8])),
+      _editRow('支払条件', c[6]) + _editRow('取引開始', c[7]) + _editSel('状態', c[8], ['稼働','休止','仕掛品'])),
     {footer:_eFoot()}
   );
 }
@@ -4693,7 +4709,7 @@ function detailMaterial(c) {
     head((c[1]||'').slice(0,1), c[1]||'', `${c[2]||''}`) +
     `<div class="detail-grid">
       <div>${sec('基本情報',
-        _editRow('コード', c[0]) + _editRow('原料名', c[1]) + _editRow('カテゴリー', c[2]) +
+        _editRow('コード', c[0]) + _editRow('原料名', c[1]) + _editSel('カテゴリー', c[2], ['揚物・天ぷら','かじりっこ','串商品','新食感','おつまみ','おでん','竹輪(仕掛品)','釜揚・蒲鉾(仕掛品)']) +
         _editRow('主仕入先', c[3]) + _editRow('副仕入先', c[4]) + _editRow('単位', c[5]))}</div>
       <div>${sec('在庫・コスト',
         _editRow('単価', c[6]) + _editRow('標準在庫', c[7]) +
