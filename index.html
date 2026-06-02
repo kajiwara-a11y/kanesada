@@ -1244,7 +1244,7 @@ PAGES.dashboard = () => `
   <div class="kpi"><div class="kpi-label">本日予測需要</div><div class="kpi-value">111,382</div><div class="kpi-change flat">当日見込集計</div></div>
   <div class="kpi"><div class="kpi-label">明日予測需要</div><div class="kpi-value">127,864</div><div class="kpi-change up">線形トレンド予測</div></div>
   <div class="kpi"><div class="kpi-label">本日製造予定</div><div class="kpi-value">18,810</div><div class="kpi-change flat">製造数合計(揚物)</div></div>
-  <div class="kpi"><div class="kpi-label">出荷予定</div><div class="kpi-value">—</div><div class="kpi-change down">—</div></div>
+  <div class="kpi"><div class="kpi-label">出荷予定</div><div class="kpi-value">111,382</div><div class="kpi-change down">当日見込ベース</div></div>
 </div>
 
 <div class="grid-2">
@@ -2083,7 +2083,7 @@ PAGES.weather = () => `
 CHARTS.wxCorrChart = {
   type:'scatter',
   data:{datasets:[
-    {label:'串王 いか',data:[],backgroundColor:'#d97706'},
+    {label:'串王3本 いか',data:[],backgroundColor:'#d97706'},
     {label:'旨辛チゲおでん',data:[],backgroundColor:'#2563eb'}]},
   options:{responsive:true,plugins:{legend:{labels:{font:{size:10}}}},scales:{x:{title:{display:true,text:'気温(℃)',font:{size:10}},ticks:{font:{size:9}}},y:{title:{display:true,text:'販売数',font:{size:10}},ticks:{font:{size:9}}}}}
 };
@@ -3076,7 +3076,7 @@ PAGES.weather = () => `
 CHARTS.wxCorrChart = {
   type:'scatter',
   data:{datasets:[
-    {label:'串王 いか',data:[],backgroundColor:'#d97706'},
+    {label:'串王3本 いか',data:[],backgroundColor:'#d97706'},
     {label:'旨辛チゲおでん',data:[],backgroundColor:'#2563eb'}]},
   options:{responsive:true,plugins:{legend:{labels:{font:{size:10}}}},scales:{x:{title:{display:true,text:'気温(℃)',font:{size:10}},ticks:{font:{size:9}}},y:{title:{display:true,text:'販売数',font:{size:10}},ticks:{font:{size:9}}}}}
 };
@@ -4475,29 +4475,35 @@ function detailCustomer(c) {
   }, 60);
 }
 
+function _editRow(label, v){
+  var val = (v==null?'':String(v)).replace(/"/g,'&quot;');
+  return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed #eef1f5;">'
+    + '<span style="color:#64748b;font-size:12px;">'+label+'</span>'
+    + '<input value="'+val+'" style="width:160px;text-align:right;border:1px solid #e7eaf0;border-radius:4px;padding:3px 7px;font-size:12px;"></div>';
+}
 function detailProductMaster(c) {
-  showRichModal(`${c[1]||''} - 商品マスタ詳細`,
-    head((c[1]||'').slice(0,1), c[1]||'', `${c[0]||''} ｜ ${c[2]||''} ｜ ${c[3]||''}`) +
+  // 新しい商品マスタ列: 0=コード,1=商品名,2=カテゴリー,3=重量,4=生産能力,5=C入数,6=当日見込,7=製造ライン,8=状態
+  showRichModal(`${c[1]||''} - 商品マスタ編集`,
+    head((c[1]||'').slice(0,1), c[1]||'', `${c[2]||''} ｜ ${c[3]||''}`) +
     `<div class="detail-grid">
       <div>${sec('基本情報',
-        kv('商品コード', c[0]||'') + kv('カテゴリー', c[2]||'') +
-        kv('容量/包装', c[3]||'') + kv('JAN', c[4]||'') +
-        kv('賞味期限', c[8]||'') + kv('状態', c[9]||''))}
-      ${sec('価格・原価',
-        kv('原価', c[5]||'') + kv('標準価格', c[6]||'') +
-        kv('粗利率', '66%'))}
+        _editRow('商品名', c[1]) + _editRow('商品コード', c[0]) +
+        _editRow('カテゴリー', c[2]) + _editRow('重量', c[3]) +
+        _editRow('状態', c[8]))}
+      ${sec('価格・原価（任意）',
+        _editRow('原価', '') + _editRow('標準価格', '') + _editRow('JAN', ''))}
       </div>
       <div>${sec('製造情報',
-        kv('製造ライン', c[7]||'') + kv('日産能力', '1,500個/日') +
-        kv('製造LT', '1日'))}
-      ${sec('販売推移（直近6ヶ月）',
-        '<div class="mini-bar">' + [1100,1180,1240,1290,1340,1380].map(v=>`<div style="height:${v/15}%"></div>`).join('') + '</div>')}
+        _editRow('生産能力(P/min)', c[4]) + _editRow('C入数', c[5]) +
+        _editRow('当日見込(ケース)', c[6]) + _editRow('製造ライン', c[7]))}
+      ${sec('賞味期限・リードタイム（任意）',
+        _editRow('賞味期限日数', '') + _editRow('製造LT(日)', ''))}
       </div>
     </div>`,
     {size:'xwide',
      footer:`<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>
              <button class="btn btn-secondary" onclick="closeModal();goPage('mBom')">BOM</button>
-             <button class="btn btn-primary" onclick="closeModal();openRowEdit({cells:[{textContent:'${c[0]||''}'}, {textContent:'${c[1]||''}'}]});showToast('編集モードに切り替え')">編集</button>`}
+             <button class="btn btn-primary" onclick="closeModal();showToast('保存しました','success')">保存</button>`}
   );
 }
 
