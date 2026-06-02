@@ -632,6 +632,9 @@ tr.row-clickable{cursor:pointer}
 
 /* Chart container — ensure they don't squish in modal */
 .modal-body canvas{max-width:100%}
+/* データ行はクリックで明細表示できることを示す */
+#contentArea tbody tr{cursor:pointer}
+#contentArea tbody tr:hover{background:var(--surface-alt)}
 </style>
 </head>
 <body>
@@ -1031,6 +1034,27 @@ document.addEventListener('click', function(e){
     showToast('「' + label + '」を実行しました（デモ）', 'success'); return;
   }
   if (label) showToast('「' + label + '」（デモ）');
+});
+
+// ===== テーブル行クリックで明細モーダル（状態・提案など非ボタンセルも反応） =====
+document.addEventListener('click', function(e){
+  // ボタン等の操作要素はそれぞれのハンドラに任せる
+  if (e.target.closest('button, input, select, textarea, a, .filter-chip, .pg-btn, .tab, label')) return;
+  const tr = e.target.closest('#contentArea tbody tr');
+  if (!tr) return;
+  if (tr.closest('#modalBody')) return;               // モーダル内の表は対象外
+  const table = tr.closest('table');
+  const heads = [];
+  if (table) table.querySelectorAll('thead th').forEach(th => heads.push(th.textContent.trim()));
+  const cells = [...tr.children].map(td => td.textContent.trim());
+  let rows = '';
+  cells.forEach((c, i) => {
+    if (!c) return;
+    const h = (heads[i] && !/操作|^$/.test(heads[i])) ? heads[i] : ('項目' + (i + 1));
+    rows += '<tr><td style="color:#64748b;padding:4px 14px 4px 0;white-space:nowrap;vertical-align:top;">' + h + '</td><td style="padding:4px 0;font-weight:500;">' + c + '</td></tr>';
+  });
+  if (!rows) return;
+  openModal('明細', '<table style="font-size:12px;width:100%;">' + rows + '</table>');
 });
 
 // ===== 安全在庫設定：品種追加 =====
