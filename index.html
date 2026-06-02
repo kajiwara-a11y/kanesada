@@ -1033,6 +1033,47 @@ document.addEventListener('click', function(e){
   if (label) showToast('「' + label + '」（デモ）');
 });
 
+// ===== 安全在庫設定：品種追加 =====
+function productNameList(){
+  try {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = PAGES.mProducts();
+    return [...tmp.querySelectorAll('table tbody tr')].map(tr => tr.children[1] && tr.children[1].textContent.trim()).filter(Boolean);
+  } catch(e){ return []; }
+}
+function addSafetyItem(){
+  const opts = productNameList().map(n => '<option>' + n + '</option>').join('');
+  openModal('安全在庫設定に品種を追加', ''
+    + '<div style="display:flex;flex-direction:column;gap:12px;font-size:12px;">'
+    + '<label>商品<br><select id="safName" style="width:100%;padding:6px;">' + opts + '</select></label>'
+    + '<div style="display:flex;gap:12px;">'
+    + '<label>安全在庫（手動設定）<br><input id="safQty" type="number" value="1000" style="width:120px;"></label>'
+    + '<label>現在庫<br><input id="safStock" type="number" value="0" style="width:120px;"></label>'
+    + '</div>'
+    + '<div style="text-align:right;margin-top:6px;"><button class="btn btn-secondary" onclick="closeModal()">キャンセル</button> '
+    + '<button class="btn btn-primary" onclick="confirmAddSafety()">追加する</button></div>'
+    + '</div>');
+}
+function confirmAddSafety(){
+  const tb = document.getElementById('safetyTbody');
+  if (!tb) { closeModal(); return; }
+  const name = (document.getElementById('safName')||{}).value || '';
+  const qty = parseInt((document.getElementById('safQty')||{}).value, 10) || 0;
+  const stock = parseInt((document.getElementById('safStock')||{}).value, 10) || 0;
+  const ok = stock >= qty;
+  const badge = ok ? '<span class="badge badge-green">充足</span>' : '<span class="badge badge-red">不足</span>';
+  const tr = document.createElement('tr');
+  tr.innerHTML = '<td>' + name + '</td>'
+    + '<td class="num">' + qty.toLocaleString() + '</td>'
+    + '<td class="num"><input type="number" value="' + qty + '" style="width:60px;"></td>'
+    + '<td class="num">' + stock.toLocaleString() + '</td>'
+    + '<td>' + badge + '</td>'
+    + '<td><button class="btn btn-ghost btn-xs" onclick="this.closest(\'tr\').remove();showToast(\'削除しました\',\'success\')">削除</button></td>';
+  tb.appendChild(tr);
+  closeModal();
+  showToast('「' + name + '」を安全在庫設定に追加しました', 'success');
+}
+
 function openModal(title, html) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalBody').innerHTML = html;
@@ -1608,14 +1649,15 @@ PAGES.inventory = () => `
 
 <div id="inv-safety" class="tab-content">
   <div class="alert alert-info"><span>ℹ</span><div>安全在庫はAIが需要予測の信頼区間下限と仕入リードタイムから自動算出。手動上書き可能。</div></div>
+  <div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="btn btn-primary" onclick="addSafetyItem()">＋ 品種追加</button></div>
   <div class="card" style="padding:0;">
     <table>
-      <thead><tr><th>商品</th><th class="num">AI推奨安全在庫</th><th class="num">手動設定</th><th class="num">現在庫</th><th>状態</th></tr></thead>
-      <tbody>
-        <tr><td>カネスエ磯辺揚げ</td><td class="num">1,200</td><td class="num"><input type="number" value="1200" style="width:60px;"></td><td class="num">4,200</td><td><span class="badge badge-green">充足</span></td></tr>
-        <tr><td>ゲンキーいか</td><td class="num">1,200</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">1,820</td><td><span class="badge badge-green">充足</span></td></tr>
-        <tr><td>串王3本 いか</td><td class="num">1,100</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">3,420</td><td><span class="badge badge-green">充足</span></td></tr>
-        <tr><td>もっち餅(角型)4枚</td><td class="num">850</td><td class="num"><input type="number" value="850" style="width:60px;"></td><td class="num">2,850</td><td><span class="badge badge-green">充足</span></td></tr>
+      <thead><tr><th>商品</th><th class="num">AI推奨安全在庫</th><th class="num">手動設定</th><th class="num">現在庫</th><th>状態</th><th>操作</th></tr></thead>
+      <tbody id="safetyTbody">
+        <tr><td>カネスエ磯辺揚げ</td><td class="num">1,200</td><td class="num"><input type="number" value="1200" style="width:60px;"></td><td class="num">4,200</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
+        <tr><td>ゲンキーいか</td><td class="num">1,200</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">1,820</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
+        <tr><td>串王3本 いか</td><td class="num">1,100</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">3,420</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
+        <tr><td>もっち餅(角型)4枚</td><td class="num">850</td><td class="num"><input type="number" value="850" style="width:60px;"></td><td class="num">2,850</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
       </tbody>
     </table>
   </div>
@@ -2536,14 +2578,15 @@ PAGES.inventory = () => `
 
 <div id="inv-safety" class="tab-content">
   <div class="alert alert-info"><span>ℹ</span><div>安全在庫はAIが需要予測の信頼区間下限と仕入リードタイムから自動算出。手動上書き可能。</div></div>
+  <div style="display:flex;justify-content:flex-end;margin-bottom:8px;"><button class="btn btn-primary" onclick="addSafetyItem()">＋ 品種追加</button></div>
   <div class="card" style="padding:0;">
     <table>
-      <thead><tr><th>商品</th><th class="num">AI推奨安全在庫</th><th class="num">手動設定</th><th class="num">現在庫</th><th>状態</th></tr></thead>
-      <tbody>
-        <tr><td>カネスエ磯辺揚げ</td><td class="num">1,200</td><td class="num"><input type="number" value="1200" style="width:60px;"></td><td class="num">4,200</td><td><span class="badge badge-green">充足</span></td></tr>
-        <tr><td>ゲンキーいか</td><td class="num">1,200</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">1,820</td><td><span class="badge badge-green">充足</span></td></tr>
-        <tr><td>串王3本 いか</td><td class="num">1,100</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">3,420</td><td><span class="badge badge-green">充足</span></td></tr>
-        <tr><td>もっち餅(角型)4枚</td><td class="num">850</td><td class="num"><input type="number" value="850" style="width:60px;"></td><td class="num">2,850</td><td><span class="badge badge-green">充足</span></td></tr>
+      <thead><tr><th>商品</th><th class="num">AI推奨安全在庫</th><th class="num">手動設定</th><th class="num">現在庫</th><th>状態</th><th>操作</th></tr></thead>
+      <tbody id="safetyTbody">
+        <tr><td>カネスエ磯辺揚げ</td><td class="num">1,200</td><td class="num"><input type="number" value="1200" style="width:60px;"></td><td class="num">4,200</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
+        <tr><td>ゲンキーいか</td><td class="num">1,200</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">1,820</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
+        <tr><td>串王3本 いか</td><td class="num">1,100</td><td class="num"><input type="number" value="1000" style="width:60px;"></td><td class="num">3,420</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
+        <tr><td>もっち餅(角型)4枚</td><td class="num">850</td><td class="num"><input type="number" value="850" style="width:60px;"></td><td class="num">2,850</td><td><span class="badge badge-green">充足</span></td><td><button class="btn btn-ghost btn-xs" onclick="this.closest('tr').remove();showToast('削除しました','success')">削除</button></td></tr>
       </tbody>
     </table>
   </div>
