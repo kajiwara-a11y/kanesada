@@ -1207,6 +1207,24 @@ function updateDashUtil(line){
   charts.dashAcc.update();
 }
 
+
+const SEISANSEI = {"5/21": [{"line": "2号機", "util": 99.9, "qty": 145058, "prod": 9511}, {"line": "3号機", "util": 99.9, "qty": 134230, "prod": 8948}, {"line": "4号機", "util": 99.9, "qty": 128804, "prod": 9529}, {"line": "5号機", "util": 94.7, "qty": 123096, "prod": 8289}, {"line": "6号機", "util": 98.2, "qty": 115696, "prod": 7756}, {"line": "7号機", "util": 97.7, "qty": 117698, "prod": 7717}, {"line": "8号機", "util": 70.7, "qty": 25427, "prod": 2480}, {"line": "9号機", "util": 95.9, "qty": 97190, "prod": 7543}], "5/22": [{"line": "2号機", "util": 99.3, "qty": 135258, "prod": 9338}, {"line": "3号機", "util": 99.3, "qty": 126922, "prod": 8959}, {"line": "4号機", "util": 100.0, "qty": 180950, "prod": 10857}, {"line": "5号機", "util": 100.0, "qty": 34770, "prod": 1846}, {"line": "6号機", "util": 97.9, "qty": 144886, "prod": 7598}, {"line": "7号機", "util": 93.9, "qty": 144686, "prod": 7668}, {"line": "8号機", "util": 77.4, "qty": 20082, "prod": 2231}, {"line": "9号機", "util": 74.4, "qty": 45916, "prod": 6232}], "5/23": [{"line": "1号機", "util": 100.0, "qty": 52346, "prod": 6028}, {"line": "2号機", "util": 99.4, "qty": 187282, "prod": 9286}, {"line": "3号機", "util": 98.9, "qty": 184688, "prod": 9045}, {"line": "4号機", "util": 99.9, "qty": 173766, "prod": 9835}, {"line": "5号機", "util": 96.3, "qty": 198358, "prod": 9016}, {"line": "6号機", "util": 98.0, "qty": 181214, "prod": 8527}, {"line": "7号機", "util": 99.2, "qty": 171870, "prod": 8487}, {"line": "8号機", "util": 100.0, "qty": 11354, "prod": 5280}, {"line": "9号機", "util": 82.6, "qty": 31748, "prod": 7188}], "5/24": [{"line": "2号機", "util": 97.0, "qty": 117488, "prod": 8767}, {"line": "3号機", "util": 96.6, "qty": 117424, "prod": 8592}, {"line": "4号機", "util": 99.9, "qty": 145524, "prod": 9200}, {"line": "5号機", "util": 89.9, "qty": 154242, "prod": 8788}, {"line": "6号機", "util": 94.9, "qty": 147906, "prod": 8786}, {"line": "7号機", "util": 95.0, "qty": 152206, "prod": 8866}, {"line": "8号機", "util": 75.5, "qty": 15800, "prod": 2038}, {"line": "9号機", "util": 28.3, "qty": 46352, "prod": 6393}], "5/25": [{"line": "1号機", "util": 100.0, "qty": 15286, "prod": 5240}, {"line": "2号機", "util": 95.7, "qty": 115590, "prod": 8437}, {"line": "3号機", "util": 98.8, "qty": 98958, "prod": 6888}, {"line": "4号機", "util": 99.9, "qty": 167200, "prod": 9655}, {"line": "5号機", "util": 95.0, "qty": 160880, "prod": 8783}, {"line": "6号機", "util": 89.3, "qty": 137054, "prod": 7579}, {"line": "7号機", "util": 88.2, "qty": 133724, "prod": 7463}, {"line": "8号機", "util": 65.7, "qty": 15366, "prod": 2634}, {"line": "9号機", "util": 77.5, "qty": 89782, "prod": 5855}]};
+const HAIKI = {"5/21": {"冷却": 4.6, "脱油機": 18, "床": 120, "廃棄品": 90, "期限切れ": 0, "天かす": 2, "B級": 217, "ロス計": 310.6, "金額": 192257.8, "amt": 192257}, "5/22": {"冷却": 2.1, "脱油機": 45.6, "床": 145, "廃棄品": 204.6, "期限切れ": 0, "天かす": 1.5, "B級": 611, "ロス計": 1007.7, "金額": 626862.6, "amt": 626862}, "5/23": {"冷却": 2.1, "脱油機": 32, "床": 129, "廃棄品": 189.2, "期限切れ": 0, "天かす": 1.5, "B級": 60, "ロス計": 411.7, "金額": 255535.9, "amt": 255535}, "5/24": {"冷却": 2.4, "脱油機": 29, "床": 135, "廃棄品": 209.7, "期限切れ": 0, "天かす": 1.9, "B級": 60, "ロス計": 435.6, "金額": 270170.2, "amt": 270170}, "5/25": {"冷却": 1.7, "脱油機": 25, "床": 134, "廃棄品": 143.1, "期限切れ": 0, "天かす": 2.3, "B級": 122.9, "ロス計": 412.3, "金額": 255405.1, "amt": 255405}};
+function ssDateOptions(){ return Object.keys(SEISANSEI).map(function(d){return '<option>'+d+'</option>';}).join(''); }
+function hkDateOptions(){ return Object.keys(HAIKI).map(function(d){return '<option>'+d+'</option>';}).join(''); }
+function updateSeisansei(date){
+  var tb=document.getElementById('seisanseiBody'); if(!tb) return;
+  tb.innerHTML=(SEISANSEI[date]||[]).map(function(o){return '<tr><td>'+o.line+'</td><td class="num">'+(o.util!=null?o.util+'%':'—')+'</td><td class="num">'+o.qty.toLocaleString()+'</td><td class="num">'+(o.prod?o.prod.toLocaleString():'—')+'</td><td class="num">0</td></tr>';}).join('');
+}
+function updateHaiki(date){
+  var tb=document.getElementById('haikiBody'); if(!tb) return;
+  var d=HAIKI[date]; if(!d) return;
+  var ord=[['床ロス','床'],['B級（10K）','B級'],['脱油機','脱油機'],['廃棄品','廃棄品'],['天かす','天かす'],['冷却','冷却'],['期限切れ','期限切れ']];
+  var rows=ord.map(function(x){return '<tr><td>'+x[0]+'</td><td class="num">'+d[x[1]]+'</td></tr>';}).join('');
+  rows+='<tr style="font-weight:600;background:#f9fafb;"><td>ロス計 ／ ロス金額</td><td class="num">'+d['ロス計']+'kg ／ ¥'+(d.amt||0).toLocaleString()+'</td></tr>';
+  tb.innerHTML=rows;
+}
+
 function openModal(title, html) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalBody').innerHTML = html;
@@ -1591,9 +1609,9 @@ PAGES.production = () => `
     <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
   </div>
 <div class="card" style="padding:0;margin:10px 0;">
-  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">竹輪ライン 号機別生産性（6月日報 5/21）</div>
+  <div class="card-header" style="padding:8px 12px;"><div class="card-title">竹輪ライン 号機別生産性（6月日報）</div><select onchange="updateSeisansei(this.value)" style="font-size:11px;">${ssDateOptions()}</select></div>
   <table><thead><tr><th>号機</th><th class="num">稼働率</th><th class="num">製造数(本)</th><th class="num">生産性(本/h)</th><th class="num">トラブル停止(分)</th></tr></thead>
-  <tbody><tr><td>2号機</td><td class="num">99.9%</td><td class="num">145,058</td><td class="num">9,511</td><td class="num">0</td></tr><tr><td>3号機</td><td class="num">99.9%</td><td class="num">134,230</td><td class="num">8,948</td><td class="num">0</td></tr><tr><td>4号機</td><td class="num">99.9%</td><td class="num">128,804</td><td class="num">9,529</td><td class="num">0</td></tr><tr><td>5号機</td><td class="num">94.7%</td><td class="num">123,096</td><td class="num">8,289</td><td class="num">0</td></tr><tr><td>6号機</td><td class="num">98.2%</td><td class="num">115,696</td><td class="num">7,756</td><td class="num">0</td></tr><tr><td>7号機</td><td class="num">97.7%</td><td class="num">117,698</td><td class="num">7,717</td><td class="num">0</td></tr><tr><td>8号機</td><td class="num">70.7%</td><td class="num">25,427</td><td class="num">2,480</td><td class="num">0</td></tr><tr><td>9号機</td><td class="num">95.9%</td><td class="num">97,190</td><td class="num">7,543</td><td class="num">0</td></tr></tbody></table>
+  <tbody id="seisanseiBody"><tr><td>2号機</td><td class="num">99.9%</td><td class="num">145,058</td><td class="num">9,511</td><td class="num">0</td></tr><tr><td>3号機</td><td class="num">99.9%</td><td class="num">134,230</td><td class="num">8,948</td><td class="num">0</td></tr><tr><td>4号機</td><td class="num">99.9%</td><td class="num">128,804</td><td class="num">9,529</td><td class="num">0</td></tr><tr><td>5号機</td><td class="num">94.7%</td><td class="num">123,096</td><td class="num">8,289</td><td class="num">0</td></tr><tr><td>6号機</td><td class="num">98.2%</td><td class="num">115,696</td><td class="num">7,756</td><td class="num">0</td></tr><tr><td>7号機</td><td class="num">97.7%</td><td class="num">117,698</td><td class="num">7,717</td><td class="num">0</td></tr><tr><td>8号機</td><td class="num">70.7%</td><td class="num">25,427</td><td class="num">2,480</td><td class="num">0</td></tr><tr><td>9号機</td><td class="num">95.9%</td><td class="num">97,190</td><td class="num">7,543</td><td class="num">0</td></tr></tbody></table>
 </div>
 <div class="card" style="padding:0;margin:10px 0;">
   <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">竹輪ライン 日別製造数・稼働率（6月日報 5/21-5/25）</div>
@@ -1928,10 +1946,10 @@ PAGES.disposal = () => `
   <div class="kpi"><div class="kpi-label">削減効果(YTD)</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
 </div>
 <div class="card" style="padding:0;margin-bottom:10px;">
-  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">廃棄内訳（揚物ライン 5/25 日報実績）</div>
+  <div class="card-header" style="padding:8px 12px;"><div class="card-title">廃棄内訳（揚物ライン 日報実績）</div><select onchange="updateHaiki(this.value)" style="font-size:11px;">${hkDateOptions()}</select></div>
   <table>
     <thead><tr><th>区分</th><th class="num">数量(kg)</th></tr></thead>
-    <tbody>
+    <tbody id="haikiBody">
       <tr><td>床ロス</td><td class="num">134.0</td></tr>
       <tr><td>B級（10K）</td><td class="num">122.9</td></tr>
       <tr><td>脱油機</td><td class="num">25.0</td></tr>
@@ -2655,9 +2673,9 @@ PAGES.production = () => `
     <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
   </div>
 <div class="card" style="padding:0;margin:10px 0;">
-  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">竹輪ライン 号機別生産性（6月日報 5/21）</div>
+  <div class="card-header" style="padding:8px 12px;"><div class="card-title">竹輪ライン 号機別生産性（6月日報）</div><select onchange="updateSeisansei(this.value)" style="font-size:11px;">${ssDateOptions()}</select></div>
   <table><thead><tr><th>号機</th><th class="num">稼働率</th><th class="num">製造数(本)</th><th class="num">生産性(本/h)</th><th class="num">トラブル停止(分)</th></tr></thead>
-  <tbody><tr><td>2号機</td><td class="num">99.9%</td><td class="num">145,058</td><td class="num">9,511</td><td class="num">0</td></tr><tr><td>3号機</td><td class="num">99.9%</td><td class="num">134,230</td><td class="num">8,948</td><td class="num">0</td></tr><tr><td>4号機</td><td class="num">99.9%</td><td class="num">128,804</td><td class="num">9,529</td><td class="num">0</td></tr><tr><td>5号機</td><td class="num">94.7%</td><td class="num">123,096</td><td class="num">8,289</td><td class="num">0</td></tr><tr><td>6号機</td><td class="num">98.2%</td><td class="num">115,696</td><td class="num">7,756</td><td class="num">0</td></tr><tr><td>7号機</td><td class="num">97.7%</td><td class="num">117,698</td><td class="num">7,717</td><td class="num">0</td></tr><tr><td>8号機</td><td class="num">70.7%</td><td class="num">25,427</td><td class="num">2,480</td><td class="num">0</td></tr><tr><td>9号機</td><td class="num">95.9%</td><td class="num">97,190</td><td class="num">7,543</td><td class="num">0</td></tr></tbody></table>
+  <tbody id="seisanseiBody"><tr><td>2号機</td><td class="num">99.9%</td><td class="num">145,058</td><td class="num">9,511</td><td class="num">0</td></tr><tr><td>3号機</td><td class="num">99.9%</td><td class="num">134,230</td><td class="num">8,948</td><td class="num">0</td></tr><tr><td>4号機</td><td class="num">99.9%</td><td class="num">128,804</td><td class="num">9,529</td><td class="num">0</td></tr><tr><td>5号機</td><td class="num">94.7%</td><td class="num">123,096</td><td class="num">8,289</td><td class="num">0</td></tr><tr><td>6号機</td><td class="num">98.2%</td><td class="num">115,696</td><td class="num">7,756</td><td class="num">0</td></tr><tr><td>7号機</td><td class="num">97.7%</td><td class="num">117,698</td><td class="num">7,717</td><td class="num">0</td></tr><tr><td>8号機</td><td class="num">70.7%</td><td class="num">25,427</td><td class="num">2,480</td><td class="num">0</td></tr><tr><td>9号機</td><td class="num">95.9%</td><td class="num">97,190</td><td class="num">7,543</td><td class="num">0</td></tr></tbody></table>
 </div>
 <div class="card" style="padding:0;margin:10px 0;">
   <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">竹輪ライン 日別製造数・稼働率（6月日報 5/21-5/25）</div>
@@ -2991,10 +3009,10 @@ PAGES.disposal = () => `
   <div class="kpi"><div class="kpi-label">削減効果(YTD)</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
 </div>
 <div class="card" style="padding:0;margin-bottom:10px;">
-  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">廃棄内訳（揚物ライン 5/25 日報実績）</div>
+  <div class="card-header" style="padding:8px 12px;"><div class="card-title">廃棄内訳（揚物ライン 日報実績）</div><select onchange="updateHaiki(this.value)" style="font-size:11px;">${hkDateOptions()}</select></div>
   <table>
     <thead><tr><th>区分</th><th class="num">数量(kg)</th></tr></thead>
-    <tbody>
+    <tbody id="haikiBody">
       <tr><td>床ロス</td><td class="num">134.0</td></tr>
       <tr><td>B級（10K）</td><td class="num">122.9</td></tr>
       <tr><td>脱油機</td><td class="num">25.0</td></tr>
