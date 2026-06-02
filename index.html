@@ -1266,15 +1266,15 @@ PAGES.dashboard = () => `
 
 <div class="grid-3">
   <div class="card">
-    <div class="card-header"><div class="card-title">廃棄推移（月次）</div></div>
+    <div class="card-header"><div class="card-title">廃棄金額推移（日次 5/21-5/25・揚物）</div></div>
     <canvas id="dashDisposal" height="140"></canvas>
   </div>
   <div class="card">
-    <div class="card-header"><div class="card-title">在庫状況</div></div>
+    <div class="card-header"><div class="card-title">在庫 区分別件数（製品/原料/原魚）</div></div>
     <canvas id="dashStock" height="140"></canvas>
   </div>
   <div class="card">
-    <div class="card-header"><div class="card-title">予測精度推移</div></div>
+    <div class="card-header"><div class="card-title">竹輪 日別稼働率（6月日報）</div></div>
     <canvas id="dashAcc" height="140"></canvas>
   </div>
 </div>
@@ -1290,17 +1290,17 @@ CHARTS.dashFC = {
 };
 CHARTS.dashDisposal = {
   type:'bar',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],datasets:[{label:'廃棄金額(万円)',data:[],backgroundColor:'#dc2626'}]},
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],datasets:[{label:'廃棄金額(万円)',data:[19.2,62.7,25.6,27.0,25.5],backgroundColor:'#dc2626'}]},
   options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.dashStock = {
   type:'doughnut',
-  data:{labels:['適正','過多','不足'],datasets:[{data:[],backgroundColor:['#10b981','#dc2626','#d97706']}]},
+  data:{labels:['製品','原料','原魚'],datasets:[{data:[11,13,6],backgroundColor:['#2563eb','#10b981','#6d4ad8']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 CHARTS.dashAcc = {
   type:'line',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],datasets:[{label:'MAPE(%)',data:[],borderColor:'#10b981',tension:0.3,borderWidth:1.5,pointRadius:2}]},
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],datasets:[{label:'竹輪稼働率(%)',data:[95.5,95.2,98.2,89.5,91.0],borderColor:'#10b981',tension:0.3,borderWidth:1.5,pointRadius:2}]},
   options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 
@@ -2024,7 +2024,7 @@ CHARTS.dpRegionChart = {
 
 PAGES.customer = () => `
 <div class="page-title">
-  <div><h2>取引先分析</h2><div class="meta">412社｜うちアクティブ 398社｜直営店 4店舗</div></div>
+  <div><h2>取引先分析</h2><div class="meta">29社（製造予定表の納品先）</div></div>
   <div class="page-actions">
     <input type="text" placeholder="取引先検索" style="width:160px;">
     <select><option>全業態</option><option>量販店</option><option>スーパー</option><option>コンビニ</option><option>生協</option><option>業務用</option><option>百貨店</option><option>直営店</option></select>
@@ -3081,7 +3081,7 @@ CHARTS.dpRegionChart = {
 
 PAGES.customer = () => `
 <div class="page-title">
-  <div><h2>取引先分析</h2><div class="meta">412社｜うちアクティブ 398社｜直営店 4店舗</div></div>
+  <div><h2>取引先分析</h2><div class="meta">29社（製造予定表の納品先）</div></div>
   <div class="page-actions">
     <input type="text" placeholder="取引先検索" style="width:160px;">
     <select><option>全業態</option><option>量販店</option><option>スーパー</option><option>コンビニ</option><option>生協</option><option>業務用</option><option>百貨店</option><option>直営店</option></select>
