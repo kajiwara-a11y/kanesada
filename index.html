@@ -1569,6 +1569,11 @@ PAGES.production = () => `
     <div class="kpi"><div class="kpi-label">予測廃棄数</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
     <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
   </div>
+<div class="card" style="padding:0;margin:10px 0;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">竹輪ライン 号機別生産性（6月日報 5/21）</div>
+  <table><thead><tr><th>号機</th><th class="num">稼働率</th><th class="num">製造数(本)</th><th class="num">生産性(本/h)</th><th class="num">トラブル停止(分)</th></tr></thead>
+  <tbody><tr><td>2号機</td><td class="num">99.9%</td><td class="num">145,058</td><td class="num">9,511</td><td class="num">0</td></tr><tr><td>3号機</td><td class="num">99.9%</td><td class="num">134,230</td><td class="num">8,948</td><td class="num">0</td></tr><tr><td>4号機</td><td class="num">99.9%</td><td class="num">128,804</td><td class="num">9,529</td><td class="num">0</td></tr><tr><td>5号機</td><td class="num">94.7%</td><td class="num">123,096</td><td class="num">8,289</td><td class="num">0</td></tr><tr><td>6号機</td><td class="num">98.2%</td><td class="num">115,696</td><td class="num">7,756</td><td class="num">0</td></tr><tr><td>7号機</td><td class="num">97.7%</td><td class="num">117,698</td><td class="num">7,717</td><td class="num">0</td></tr><tr><td>8号機</td><td class="num">70.7%</td><td class="num">25,427</td><td class="num">2,480</td><td class="num">0</td></tr><tr><td>9号機</td><td class="num">95.9%</td><td class="num">97,190</td><td class="num">7,543</td><td class="num">0</td></tr></tbody></table>
+</div>
   <div class="card" style="padding:0;">
     <table>
       <thead><tr><th><input type="checkbox"></th><th>優先</th><th>ライン</th><th>商品</th><th class="num">AI推奨</th><th class="num">計画値</th><th class="num">在庫</th><th class="num">予測需要</th><th>原料</th><th>賞味期限</th><th>精度</th><th>状態</th></tr></thead>
@@ -2187,6 +2192,17 @@ CHARTS.flCauseChart = {
 PAGES.execreport = () => `
 <div class="page-title">
   <div><h2>経営レポート</h2><div class="meta">経営層向け｜月次・四半期サマリー</div></div>
+<div class="card" style="padding:0;margin-bottom:10px;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">経営サマリー（実データ）</div>
+  <table><tbody>
+    <tr><td>設備稼働率（6月日報）</td><td class="num">94.6%</td></tr>
+    <tr><td>フードロス率（4ライン平均）</td><td class="num">2.8%</td></tr>
+    <tr><td>月次廃棄金額（揚物ライン）</td><td class="num">¥320万</td></tr>
+    <tr><td>本日予測需要（当日見込集計）</td><td class="num">111,382</td></tr>
+    <tr><td>登録商品数</td><td class="num">229</td></tr>
+    <tr><td>取引先数</td><td class="num">29</td></tr>
+  </tbody></table>
+</div>
   <div class="page-actions">
     <select><option>2026年5月</option><option>2026年4月</option></select>
     <button class="btn btn-secondary">PDF出力</button>
@@ -2606,6 +2622,11 @@ PAGES.production = () => `
     <div class="kpi"><div class="kpi-label">予測廃棄数</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
     <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
   </div>
+<div class="card" style="padding:0;margin:10px 0;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">竹輪ライン 号機別生産性（6月日報 5/21）</div>
+  <table><thead><tr><th>号機</th><th class="num">稼働率</th><th class="num">製造数(本)</th><th class="num">生産性(本/h)</th><th class="num">トラブル停止(分)</th></tr></thead>
+  <tbody><tr><td>2号機</td><td class="num">99.9%</td><td class="num">145,058</td><td class="num">9,511</td><td class="num">0</td></tr><tr><td>3号機</td><td class="num">99.9%</td><td class="num">134,230</td><td class="num">8,948</td><td class="num">0</td></tr><tr><td>4号機</td><td class="num">99.9%</td><td class="num">128,804</td><td class="num">9,529</td><td class="num">0</td></tr><tr><td>5号機</td><td class="num">94.7%</td><td class="num">123,096</td><td class="num">8,289</td><td class="num">0</td></tr><tr><td>6号機</td><td class="num">98.2%</td><td class="num">115,696</td><td class="num">7,756</td><td class="num">0</td></tr><tr><td>7号機</td><td class="num">97.7%</td><td class="num">117,698</td><td class="num">7,717</td><td class="num">0</td></tr><tr><td>8号機</td><td class="num">70.7%</td><td class="num">25,427</td><td class="num">2,480</td><td class="num">0</td></tr><tr><td>9号機</td><td class="num">95.9%</td><td class="num">97,190</td><td class="num">7,543</td><td class="num">0</td></tr></tbody></table>
+</div>
   <div class="card" style="padding:0;">
     <table>
       <thead><tr><th><input type="checkbox"></th><th>優先</th><th>ライン</th><th>商品</th><th class="num">AI推奨</th><th class="num">計画値</th><th class="num">在庫</th><th class="num">予測需要</th><th>原料</th><th>賞味期限</th><th>精度</th><th>状態</th></tr></thead>
@@ -3223,6 +3244,17 @@ CHARTS.flCauseChart = {
 PAGES.execreport = () => `
 <div class="page-title">
   <div><h2>経営レポート</h2><div class="meta">経営層向け｜月次・四半期サマリー</div></div>
+<div class="card" style="padding:0;margin-bottom:10px;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">経営サマリー（実データ）</div>
+  <table><tbody>
+    <tr><td>設備稼働率（6月日報）</td><td class="num">94.6%</td></tr>
+    <tr><td>フードロス率（4ライン平均）</td><td class="num">2.8%</td></tr>
+    <tr><td>月次廃棄金額（揚物ライン）</td><td class="num">¥320万</td></tr>
+    <tr><td>本日予測需要（当日見込集計）</td><td class="num">111,382</td></tr>
+    <tr><td>登録商品数</td><td class="num">229</td></tr>
+    <tr><td>取引先数</td><td class="num">29</td></tr>
+  </tbody></table>
+</div>
   <div class="page-actions">
     <select><option>2026年5月</option><option>2026年4月</option></select>
     <button class="btn btn-secondary">PDF出力</button>
@@ -3724,6 +3756,12 @@ PAGES.mMaterials = () => `
   </table>
 </div>
 <div class="pagination"><div>41 / 41 件</div><div class="pages"><button class="pg-btn">‹</button><button class="pg-btn current">1</button><button class="pg-btn">2</button><button class="pg-btn">3</button><button class="pg-btn">›</button></div></div>
+<div class="card" style="padding:0;margin-top:10px;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">配合室 使用原料明細（5/24）｜各ラインの使用原料・賞味期限</div>
+  <table><thead><tr><th>原料名</th><th>竹輪</th><th>蒲鉾</th><th>半平</th><th>釜揚</th></tr></thead>
+  <tbody><tr><td>馬澱</td><td>26.2.3</td><td>26.2.3</td><td>26.2.3</td><td>26.2.3</td></tr><tr><td>タピオカ</td><td>26.10.24</td><td>26.10.24</td><td>26.10.24</td><td>—</td></tr><tr><td>銀鱗M</td><td>25.11.29</td><td>—</td><td>—</td><td>—</td></tr><tr><td>フジクリスター</td><td>27.2.18</td><td>27.2.18</td><td>27.2.18</td><td>—</td></tr><tr><td>キシロース</td><td>27.12.2</td><td>27.12.2</td><td>27.12.2</td><td>—</td></tr><tr><td>上白糖</td><td>26.2.28</td><td>26.2.28</td><td>26.2.28</td><td>26.2.28</td></tr><tr><td>CJ-IRC</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>コートン</td><td>26.9.4</td><td>26.9.4</td><td>26.9.4</td><td>26.9.4</td></tr><tr><td>味の素　WP</td><td>25.11.19</td><td>—</td><td>25.11.19</td><td>25.11.19</td></tr><tr><td>ベスミー</td><td>27.12.14</td><td>27.12.14</td><td>27.12.14</td><td>27.12.14</td></tr><tr><td>BSねり味MKS</td><td>26.12.9</td><td>26.12.9</td><td>26.12.9</td><td>26.12.9</td></tr><tr><td>スワランCK</td><td>26.12.4</td><td>—</td><td>—</td><td>—</td></tr><tr><td>アクティバTGK</td><td>27.7.10</td><td>27.7.10</td><td>27.7.10</td><td>27.7.10</td></tr><tr><td>MSG</td><td>28.1.5</td><td>28.1.5</td><td>28.1.5</td><td>28.1.5</td></tr><tr><td>コーンスターチ</td><td>26.2.8</td><td>26.2.8</td><td>—</td><td>—</td></tr><tr><td>ソーヤフラワー</td><td>26.12.19</td><td>—</td><td>—</td><td>—</td></tr><tr><td>SML</td><td>27.1.4</td><td>27.1.4</td><td>—</td><td>—</td></tr><tr><td>酵母エキス</td><td>26.10.15</td><td>26.10.15</td><td>26.10.15</td><td>—</td></tr><tr><td>どっしり鰹節
+エキス</td><td>26.11.5</td><td>26.11.5</td><td>26.11.5</td><td>—</td></tr><tr><td>コロカルソWB</td><td>27.12.24</td><td>27.12.24</td><td>27.12.24</td><td>27.12.24</td></tr></tbody></table>
+</div>
 `;
 
 PAGES.mBom = () => `
