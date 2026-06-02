@@ -1193,17 +1193,17 @@ const PAGES = {};
 
 PAGES.dashboard = () => `
 <div class="page-title">
-  <div><h2>ダッシュボード</h2><div class="meta">関東工場｜2026/5/25（月）09:24｜最終更新 09:20</div></div>
+  <div><h2>ダッシュボード</h2><div class="meta">本社工場｜2026/5/26（火）｜製造予定・日報ベース</div></div>
   <div class="page-actions">
-    <select><option>関東工場</option><option>東海工場</option><option>本社全体</option></select>
+    <select><option>本社工場</option><option>本社全体</option></select>
     <select><option>本日</option><option>今週</option><option>今月</option></select>
     <button class="btn btn-secondary" onclick="showToast('Excel出力中...')">Excel</button>
     <button class="btn btn-secondary" onclick="showToast('PDF出力中...')">PDF</button>
   </div>
 </div>
 
-<div class="alert alert-warn"><span>⚠</span><div style="flex:1;">明日の気温上昇により、ちくわ・串商品の需要が予測値より上振れる可能性があります。<a onclick="goPage('production')" style="cursor:pointer;text-decoration:underline;">製造計画を確認</a></div><span class="x">×</span></div>
-<div class="alert alert-error"><span>⚠</span><div style="flex:1;">「旨辛チゲおでん」在庫が予測需要の5倍。賞味期限切れリスク。<a onclick="goPage('inventory')" style="cursor:pointer;text-decoration:underline;">対応する</a></div><span class="x">×</span></div>
+<div class="alert alert-info"><span>ℹ</span><div style="flex:1;">本日予測需要 111,382個（5月日次見込の集計）／明日見込 約127,864個（線形トレンド）。<a onclick="goPage('forecast')" style="cursor:pointer;text-decoration:underline;">需要予測を確認</a></div><span class="x">×</span></div>
+<div class="alert alert-warn"><span>⚠</span><div style="flex:1;">6月日報実績：設備稼働率 94.6%／廃棄率 2.8%／月次廃棄金額 ¥320万（揚物ライン）。<a onclick="goPage('foodloss')" style="cursor:pointer;text-decoration:underline;">フードロス分析を確認</a></div><span class="x">×</span></div>
 
 <div class="grid-4" style="margin-bottom:10px;">
   <div class="kpi"><div class="kpi-label">フードロス率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績(4ライン平均)</div></div>
@@ -1214,8 +1214,8 @@ PAGES.dashboard = () => `
 
 <div class="grid-4" style="margin-bottom:10px;">
   <div class="kpi"><div class="kpi-label">本日予測需要</div><div class="kpi-value">111,382</div><div class="kpi-change flat">当日見込集計</div></div>
-  <div class="kpi"><div class="kpi-label">明日予測需要</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
-  <div class="kpi"><div class="kpi-label">本日製造予定</div><div class="kpi-value">—</div><div class="kpi-change flat">—</div></div>
+  <div class="kpi"><div class="kpi-label">明日予測需要</div><div class="kpi-value">127,864</div><div class="kpi-change up">線形トレンド予測</div></div>
+  <div class="kpi"><div class="kpi-label">本日製造予定</div><div class="kpi-value">18,810</div><div class="kpi-change flat">製造数合計(揚物)</div></div>
   <div class="kpi"><div class="kpi-label">出荷予定</div><div class="kpi-value">—</div><div class="kpi-change down">—</div></div>
 </div>
 
@@ -1338,7 +1338,7 @@ PAGES.forecast = () => `
   <div class="filter-bar">
     <span class="lb">カテゴリー:</span>
     <span class="filter-chip active">全て</span><span class="filter-chip">揚物・天ぷら</span><span class="filter-chip">かじりっこ</span><span class="filter-chip">串商品</span><span class="filter-chip">新食感</span><span class="filter-chip">おつまみ</span><span class="filter-chip">おでん</span>
-    <span style="margin-left:auto;"><input type="text" placeholder="商品検索" style="width:140px;"><select><option>関東工場</option><option>東海工場</option></select></span>
+    <span style="margin-left:auto;"><input type="text" placeholder="商品検索" style="width:140px;"><select><option>本社工場</option></select></span>
   </div>
   <div class="grid-2">
     <div class="card">
@@ -1530,7 +1530,7 @@ PAGES.production = () => `
   <div><h2>製造計画</h2><div class="meta">2026/5/26（火）｜本社工場｜揚物10品(製造数)＋竹輪(前日在庫・バッチ)</div></div>
   <div class="page-actions">
     <input type="date" value="2026-05-26">
-    <select><option>関東工場</option><option>東海工場</option></select>
+    <select><option>本社工場</option></select>
     <button class="btn btn-secondary" onclick="goPage('mBom')">BOM確認</button>
     <button class="btn btn-secondary">計画履歴</button>
     <button class="btn btn-secondary">前日コピー</button>
@@ -1591,15 +1591,15 @@ PAGES.production = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">工場別 製造割当</div></div><canvas id="prFactoryChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">工場別 製造能力</div>
-      <div class="metric-row"><span class="metric-label">関東工場</span><span class="metric-value">—</span></div>
-      <div class="metric-row"><span class="metric-label">東海工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">本社工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">本社工場</span><span class="metric-value">—</span></div>
       <div class="metric-row"><span class="metric-label">合計</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card" style="padding:0;">
     <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">工場別 商品割当</div>
     <table>
-      <thead><tr><th>商品</th><th class="num">関東工場</th><th class="num">東海工場</th><th class="num">合計</th><th>主担当</th></tr></thead>
+      <thead><tr><th>商品</th><th class="num">本社工場</th><th class="num">本社工場</th><th class="num">合計</th><th>主担当</th></tr></thead>
       <tbody>
         <tr><td>カネスエ磯辺揚げ</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
         <tr><td>ゲンキーいか</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
@@ -1635,7 +1635,7 @@ PAGES.production = () => `
 
 CHARTS.prFactoryChart = {
   type:'pie',
-  data:{labels:['関東工場','東海工場'],datasets:[{data:[],backgroundColor:['#2563eb','#10b981']}]},
+  data:{labels:['本社工場'],datasets:[{data:[],backgroundColor:['#2563eb','#10b981']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 
@@ -1756,7 +1756,7 @@ PAGES.transactions = () => `
       <div><label style="font-size:10px;color:#6b7280;">製造ロット</label><br><input type="text" value="L-26052601" style="width:100%;"></div>
     </div>
     <div class="grid-4">
-      <div><label style="font-size:10px;color:#6b7280;">製造工場</label><br><select style="width:100%;"><option>関東工場</option><option>東海工場</option></select></div>
+      <div><label style="font-size:10px;color:#6b7280;">製造工場</label><br><select style="width:100%;"><option>本社工場</option></select></div>
       <div><label style="font-size:10px;color:#6b7280;">賞味期限</label><br><input type="date" value="2026-06-08" style="width:100%;"></div>
       <div><label style="font-size:10px;color:#6b7280;">担当者</label><br><input type="text" value="佐藤" style="width:100%;"></div>
       <div style="display:flex;align-items:flex-end;"><button class="btn btn-success" onclick="showToast('入庫を登録しました', 'success')">入庫登録</button></div>
@@ -1813,10 +1813,10 @@ PAGES.transactions = () => `
     <table>
       <thead><tr><th>日時</th><th>種別</th><th>商品</th><th>取引先/工場</th><th class="num">数量</th><th>ロット</th><th>担当</th></tr></thead>
       <tbody>
-        <tr><td>—</td><td><span class="badge badge-green">入庫</span></td><td>カネスエ磯辺揚げ</td><td>関東工場</td><td class="num">—</td><td>—</td><td>—</td></tr>
+        <tr><td>—</td><td><span class="badge badge-green">入庫</span></td><td>カネスエ磯辺揚げ</td><td>本社工場</td><td class="num">—</td><td>—</td><td>—</td></tr>
         <tr><td>—</td><td><span class="badge badge-blue">出庫</span></td><td>カネスエ磯辺揚げ</td><td>ゲンキー（Genky）</td><td class="num">—</td><td>—</td><td>—</td></tr>
         <tr><td>—</td><td><span class="badge badge-red">廃棄</span></td><td>紗おり 豆乳天ぷら</td><td>-</td><td class="num">—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td><span class="badge badge-green">入庫</span></td><td>カネスエ磯辺揚げ</td><td>関東工場</td><td class="num">—</td><td>—</td><td>—</td></tr>
+        <tr><td>—</td><td><span class="badge badge-green">入庫</span></td><td>カネスエ磯辺揚げ</td><td>本社工場</td><td class="num">—</td><td>—</td><td>—</td></tr>
         <tr><td>—</td><td><span class="badge badge-blue">出庫</span></td><td>ゲンキーいか</td><td>ゲンキー（Genky）</td><td class="num">—</td><td>—</td><td>—</td></tr>
       </tbody>
     </table>
@@ -2537,7 +2537,7 @@ PAGES.production = () => `
   <div><h2>製造計画</h2><div class="meta">2026/5/26（火）｜本社工場｜揚物10品(製造数)＋竹輪(前日在庫・バッチ)</div></div>
   <div class="page-actions">
     <input type="date" value="2026-05-26">
-    <select><option>関東工場</option><option>東海工場</option></select>
+    <select><option>本社工場</option></select>
     <button class="btn btn-secondary" onclick="goPage('mBom')">BOM確認</button>
     <button class="btn btn-secondary">計画履歴</button>
     <button class="btn btn-secondary">前日コピー</button>
@@ -2598,15 +2598,15 @@ PAGES.production = () => `
   <div class="grid-2">
     <div class="card"><div class="card-header"><div class="card-title">工場別 製造割当</div></div><canvas id="prFactoryChart" height="180"></canvas></div>
     <div class="card"><div class="card-title" style="margin-bottom:8px;">工場別 製造能力</div>
-      <div class="metric-row"><span class="metric-label">関東工場</span><span class="metric-value">—</span></div>
-      <div class="metric-row"><span class="metric-label">東海工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">本社工場</span><span class="metric-value">—</span></div>
+      <div class="metric-row"><span class="metric-label">本社工場</span><span class="metric-value">—</span></div>
       <div class="metric-row"><span class="metric-label">合計</span><span class="metric-value">—</span></div>
     </div>
   </div>
   <div class="card" style="padding:0;">
     <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">工場別 商品割当</div>
     <table>
-      <thead><tr><th>商品</th><th class="num">関東工場</th><th class="num">東海工場</th><th class="num">合計</th><th>主担当</th></tr></thead>
+      <thead><tr><th>商品</th><th class="num">本社工場</th><th class="num">本社工場</th><th class="num">合計</th><th>主担当</th></tr></thead>
       <tbody>
         <tr><td>カネスエ磯辺揚げ</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
         <tr><td>ゲンキーいか</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td></tr>
@@ -2642,7 +2642,7 @@ PAGES.production = () => `
 
 CHARTS.prFactoryChart = {
   type:'pie',
-  data:{labels:['関東工場','東海工場'],datasets:[{data:[],backgroundColor:['#2563eb','#10b981']}]},
+  data:{labels:['本社工場'],datasets:[{data:[],backgroundColor:['#2563eb','#10b981']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 
@@ -3555,8 +3555,8 @@ PAGES.mWarehouses = () => `
   <table>
     <thead><tr><th>センターコード</th><th>センター名</th><th>所在地</th><th class="num">保管能力</th><th class="num">現在使用率</th><th>担当工場</th><th>配送エリア</th><th>状態</th><th>操作</th></tr></thead>
     <tbody>
-      <tr><td>W-001</td><td>関東物流センター</td><td>埼玉県川越市</td><td class="num">50,000個</td><td class="num">57%</td><td>関東工場</td><td>関東・東北</td><td><span class="badge badge-green">稼働中</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>W-002</td><td>東海物流センター</td><td>愛知県小牧市</td><td class="num">35,000個</td><td class="num">52%</td><td>東海工場</td><td>東海・関西・中部・九州・中四国</td><td><span class="badge badge-green">稼働中</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>W-001</td><td>関東物流センター</td><td>埼玉県川越市</td><td class="num">50,000個</td><td class="num">57%</td><td>本社工場</td><td>関東・東北</td><td><span class="badge badge-green">稼働中</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>W-002</td><td>東海物流センター</td><td>愛知県小牧市</td><td class="num">35,000個</td><td class="num">52%</td><td>本社工場</td><td>東海・関西・中部・九州・中四国</td><td><span class="badge badge-green">稼働中</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
     </tbody>
   </table>
 </div>
@@ -3870,8 +3870,8 @@ PAGES.users = () => `
     <thead><tr><th>名前</th><th>メール</th><th>所属</th><th>権限</th><th>最終ログイン</th><th>状態</th><th>操作</th></tr></thead>
     <tbody>
       <tr><td>梶原</td><td>kajiwara@kanesada.com</td><td>本社 管理部</td><td><span class="badge badge-purple">管理者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>田中 製造部長</td><td>tanaka@kanesada.com</td><td>関東工場</td><td><span class="badge badge-blue">工場責任者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
-      <tr><td>山本 製造課長</td><td>yamamoto@kanesada.com</td><td>関東工場</td><td><span class="badge badge-blue">製造担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>田中 製造部長</td><td>tanaka@kanesada.com</td><td>本社工場</td><td><span class="badge badge-blue">工場責任者</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
+      <tr><td>山本 製造課長</td><td>yamamoto@kanesada.com</td><td>本社工場</td><td><span class="badge badge-blue">製造担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
       <tr><td>佐藤 物流主任</td><td>sato@kanesada.com</td><td>物流センター</td><td><span class="badge badge-blue">物流担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
       <tr><td>鈴木 仕入担当</td><td>suzuki@kanesada.com</td><td>本社 仕入部</td><td><span class="badge badge-blue">採購担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
       <tr><td>高橋 営業部長</td><td>takahashi@kanesada.com</td><td>本社 営業部</td><td><span class="badge badge-blue">営業担当</span></td><td>—</td><td><span class="badge badge-green">有効</span></td><td><button class="btn btn-ghost btn-xs">編集</button></td></tr>
@@ -4033,7 +4033,7 @@ PAGES.reports = () => `
   <table>
     <thead><tr><th>レポート名</th><th>作成者</th><th>作成日</th><th>最終実行</th><th>操作</th></tr></thead>
     <tbody>
-      <tr><td>関東工場 ライン別稼働率分析</td><td>田中</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
+      <tr><td>本社工場 ライン別稼働率分析</td><td>田中</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
       <tr><td>夏季限定商品 効果分析</td><td>高橋</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
       <tr><td>直営店4店舗 売上比較</td><td>中村</td><td>—</td><td>—</td><td><button class="btn btn-ghost btn-xs">開く</button></td></tr>
     </tbody>
@@ -4694,7 +4694,7 @@ function openNewUser() {
     `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
       <div class="fld"><label>名前</label><input placeholder="姓 名"></div>
       <div class="fld"><label>メール</label><input placeholder="user@kanesada.com"></div>
-      <div class="fld"><label>所属</label><input placeholder="本社 / 関東工場 etc"></div>
+      <div class="fld"><label>所属</label><input placeholder="本社 / 本社工場 etc"></div>
       <div class="fld"><label>権限</label><select><option>管理者</option><option>本社管理部門</option><option>工場責任者</option><option>採購担当</option><option>閲覧者</option></select></div>
       <div class="fld"><label>初期パスワード</label><input placeholder="自動生成 or 入力"></div>
       <div class="fld"><label>状態</label><select><option>有効</option><option>無効</option></select></div>
@@ -4743,7 +4743,7 @@ function openNewBom() {
 
 function openNewReport() {
   showRichModal('新規レポート作成',
-    `<div class="fld"><label>レポート名</label><input placeholder="例: 関東工場 月次稼働率"></div>
+    `<div class="fld"><label>レポート名</label><input placeholder="例: 本社工場 月次稼働率"></div>
      <div class="fld"><label>データ種別</label><select><option>需要予測</option><option>製造実績</option><option>在庫</option><option>廃棄</option><option>取引先売上</option></select></div>
      <div class="fld"><label>期間</label><select><option>日次</option><option>週次</option><option>月次</option><option>カスタム</option></select></div>
      <div class="fld"><label>形式</label><select><option>PDF</option><option>Excel</option><option>CSV</option></select></div>
