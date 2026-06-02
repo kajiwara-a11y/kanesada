@@ -945,6 +945,64 @@ function showToast(msg, type='info') {
   setTimeout(() => t.remove(), 2800);
 }
 
+// ===== 全ボタン共通フォールバック動作（独自onclickが無い要素に動作を付与） =====
+document.addEventListener('click', function(e){
+  // アラート/通知の × 閉じる
+  const x = e.target.closest('.alert .x, .notif-item .x');
+  if (x) { const a = x.closest('.alert, .notif-item'); if (a) a.remove(); return; }
+
+  const el = e.target.closest('button, .filter-chip, .pg-btn');
+  if (!el) return;
+  if (el.closest('#login')) return;                 // ログイン画面は対象外
+  if (el.getAttribute('onclick')) return;            // 独自ハンドラ有り→任せる
+  if (el.classList.contains('tab')) return;          // タブはbindTabsが処理
+
+  // フィルターチップ：選択状態を切替
+  if (el.classList.contains('filter-chip')) {
+    const wrap = el.parentElement;
+    wrap.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    showToast('「' + el.textContent.trim() + '」で絞り込み（デモ）');
+    return;
+  }
+  // ページネーション：現在ページ切替
+  if (el.classList.contains('pg-btn')) {
+    const t = el.textContent.trim();
+    if (!/[‹›…]/.test(t)) {
+      const wrap = el.parentElement;
+      wrap.querySelectorAll('.pg-btn').forEach(c => c.classList.remove('current'));
+      el.classList.add('current');
+    }
+    return;
+  }
+
+  const label = el.textContent.trim().replace(/\s+/g,' ');
+  const tr = el.closest('tr');
+
+  // 詳細/表示/確認：行データをモーダル表示
+  if (/詳細|表示|確認|閲覧/.test(label) && tr) {
+    const heads = [];
+    const table = el.closest('table');
+    if (table) table.querySelectorAll('thead th').forEach(th => heads.push(th.textContent.trim()));
+    const cells = [...tr.querySelectorAll('td')].map(td => td.textContent.trim());
+    let rows = '';
+    cells.forEach((c, i) => {
+      if (!c || /編集|詳細|対応/.test(c)) return;
+      const h = heads[i] && !/操作|^$/.test(heads[i]) ? heads[i] : '項目' + (i+1);
+      rows += '<tr><td style="color:#64748b;padding:4px 12px 4px 0;white-space:nowrap;">' + h + '</td><td style="padding:4px 0;font-weight:500;">' + c + '</td></tr>';
+    });
+    openModal('詳細', '<table style="font-size:12px;width:100%;">' + rows + '</table>');
+    return;
+  }
+
+  if (/編集|修正/.test(label)) { showToast('編集フォームを開きます（デモ）'); return; }
+  if (/削除/.test(label))      { showToast('削除しました（デモ）', 'success'); return; }
+  if (/承認|対応|実行|確定|保存|登録|発注|出力|取込|取り込|更新|追加|作成|送信|再学習|生成|同期|適用|開始|完了/.test(label)) {
+    showToast('「' + label + '」を実行しました（デモ）', 'success'); return;
+  }
+  if (label) showToast('「' + label + '」（デモ）');
+});
+
 function openModal(title, html) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalBody').innerHTML = html;
