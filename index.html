@@ -842,7 +842,43 @@ function goPage(pageId, el) {
   window.scrollTo(0, 0);
   setTimeout(initCharts, 50);
   setTimeout(bindTabs, 50);
+  setTimeout(initPagination, 40);
   if (pageId === 'weather' || pageId === 'dashboard') setTimeout(fetchWeather, 60);
+}
+
+// ===== 実ページネーション（テーブルの行を分割表示） =====
+function initPagination(){
+  document.querySelectorAll('#contentArea .pagination').forEach(function(pg){
+    if (pg.dataset.bound) return;
+    var el = pg, tbl = null;
+    while ((el = el.previousElementSibling)) {
+      if (el.querySelector) { tbl = el.querySelector('table tbody'); if (tbl) break; }
+    }
+    if (!tbl) return;
+    pg.dataset.bound = '1';
+    var rows = [].slice.call(tbl.children).filter(function(n){ return n.tagName === 'TR'; });
+    var size = 20, total = rows.length, pages = Math.max(1, Math.ceil(total / size)), cur = 1;
+    var pagesDiv = pg.querySelector('.pages'), countDiv = pg.querySelector('div');
+    function render(){
+      rows.forEach(function(r,i){ r.style.display = (i >= (cur-1)*size && i < cur*size) ? '' : 'none'; });
+      var from = total ? ((cur-1)*size + 1) : 0, to = Math.min(cur*size, total);
+      if (countDiv) countDiv.textContent = from + '–' + to + ' / ' + total + ' 件';
+      var html = '<button class="pg-btn" data-pg="prev">‹</button>';
+      for (var p=1; p<=pages; p++) html += '<button class="pg-btn'+(p===cur?' current':'')+'" data-pg="'+p+'">'+p+'</button>';
+      html += '<button class="pg-btn" data-pg="next">›</button>';
+      if (pagesDiv) pagesDiv.innerHTML = html;
+    }
+    if (pagesDiv) pagesDiv.addEventListener('click', function(e){
+      var b = e.target.closest('.pg-btn'); if (!b) return;
+      e.stopPropagation();
+      var v = b.dataset.pg;
+      if (v === 'prev') cur = Math.max(1, cur-1);
+      else if (v === 'next') cur = Math.min(pages, cur+1);
+      else cur = parseInt(v,10) || 1;
+      render();
+    });
+    render();
+  });
 }
 
 // ===== 実気象データ連携（Open-Meteo / 愛知県武豊町・本社） =====
