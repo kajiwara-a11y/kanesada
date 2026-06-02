@@ -2760,7 +2760,7 @@ CHARTS.invTrendChart = {
 PAGES.transactions = () => `
 <div class="page-scope">
 <div class="page-title">
-  <div><h2>入出庫管理</h2><div class="meta">関東物流センター｜本日 入庫12件・出庫34件</div></div>
+  <div><h2>入出庫管理</h2><div class="meta">本社工場 荷受け｜原魚6件・副材料13件（5/26）</div></div>
   <div class="page-actions">
     <button class="btn btn-secondary">CSV出力</button>
     <button class="btn btn-primary" onclick="showToast('新規登録画面を開きます')">新規登録</button>
@@ -2783,23 +2783,17 @@ PAGES.transactions = () => `
       <div><label style="font-size:10px;color:#6b7280;">製造ロット</label><br><input type="text" value="L-26052601" style="width:100%;"></div>
     </div>
     <div class="grid-4">
-      <div><label style="font-size:10px;color:#6b7280;">製造工場</label><br><select style="width:100%;"><option>関東工場</option><option>東海工場</option></select></div>
+      <div><label style="font-size:10px;color:#6b7280;">製造工場</label><br><select style="width:100%;"><option>本社工場</option></select></div>
       <div><label style="font-size:10px;color:#6b7280;">賞味期限</label><br><input type="date" value="2026-06-08" style="width:100%;"></div>
       <div><label style="font-size:10px;color:#6b7280;">担当者</label><br><input type="text" value="佐藤" style="width:100%;"></div>
       <div style="display:flex;align-items:flex-end;"><button class="btn btn-success" onclick="showToast('入庫を登録しました', 'success')">入庫登録</button></div>
     </div>
   </div>
   <div class="card" style="padding:0;">
-    <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">本日の入庫履歴</div>
+    <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">本日入庫の原料（荷受け 5/26）</div>
     <table>
-      <thead><tr><th>時刻</th><th>商品</th><th class="num">数量</th><th>ロット</th><th>賞味期限</th><th>担当</th></tr></thead>
-      <tbody>
-        <tr><td>—</td><td>カネスエ磯辺揚げ</td><td class="num">—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td>サンディ ちくわ磯辺揚</td><td class="num">—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td>ゲンキーいか</td><td class="num">—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td>ゲンキー生姜</td><td class="num">—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td>串王3本 いか</td><td class="num">—</td><td>—</td><td>—</td><td>—</td></tr>
-      </tbody>
+      <thead><tr><th>原料名</th><th>規格／ロット</th><th class="num">冷凍庫残(t)</th></tr></thead>
+      <tbody><tr><td>スケソウ 道産</td><td>MSCノーザンイーグル</td><td class="num">—</td></tr><tr><td>アークティック フィヨルド</td><td>A</td><td class="num">11.5</td></tr><tr><td>MSCエクセレンス</td><td>RA</td><td class="num">—</td></tr><tr><td>MSCゴールデンアラスカ</td><td>RA</td><td class="num">—</td></tr><tr><td>MSCゴールデンアラスカ</td><td>RB</td><td class="num">33</td></tr><tr><td>いわし落とし身</td><td>—</td><td class="num">34.5</td></tr><tr><td>笹谷ニシン</td><td>MIX</td><td class="num">—</td></tr><tr><td>笹谷</td><td>無リン</td><td class="num">35.5</td></tr><tr><td>笹谷スケソウ</td><td>2級</td><td class="num">40</td></tr></tbody>
     </table>
   </div>
 </div>
@@ -2816,17 +2810,10 @@ PAGES.transactions = () => `
     <button class="btn btn-success" onclick="showToast('出庫を登録しました', 'success')">出庫登録</button>
   </div>
   <div class="card" style="padding:0;">
-    <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">本日の出庫履歴</div>
+    <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">副材料 入出庫（5/22 荷受け）</div>
     <table>
-      <thead><tr><th>時刻</th><th>取引先</th><th>商品</th><th class="num">数量</th><th>担当</th></tr></thead>
-      <tbody>
-        <tr><td>—</td><td>ゲンキー（Genky）</td><td>カネスエ磯辺揚げ</td><td class="num">—</td><td>—</td></tr>
-        <tr><td>—</td><td>ゲンキー（Genky）</td><td>ゲンキーいか</td><td class="num">—</td><td>—</td></tr>
-        <tr><td>—</td><td>バロー</td><td>串王3本 いか</td><td class="num">—</td><td>—</td></tr>
-        <tr><td>—</td><td>カネスエ</td><td>おつまみ棒天 いかキャベ</td><td class="num">—</td><td>—</td></tr>
-        <tr><td>—</td><td>平和堂</td><td>もっち餅(角型)4枚</td><td class="num">—</td><td>—</td></tr>
-        <tr><td>—</td><td>百貨店G</td><td>素材をいただく 生姜</td><td class="num">—</td><td>—</td></tr>
-      </tbody>
+      <thead><tr><th>原料・副材料</th><th class="num">入庫</th><th class="num">出庫</th><th class="num">在庫</th></tr></thead>
+      <tbody><tr><td>ムキ枝豆</td><td class="num">0</td><td class="num">44</td><td class="num">96</td></tr><tr><td>ムキ枝豆 インドネシア</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>コーン</td><td class="num">0</td><td class="num">12</td><td class="num">184</td></tr><tr><td>絞りとうふ</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>ほうれん草</td><td class="num">0</td><td class="num">1</td><td class="num">28</td></tr><tr><td>いんげん</td><td class="num">0</td><td class="num">0</td><td class="num">30</td></tr><tr><td>イカ耳</td><td class="num">0</td><td class="num">26</td><td class="num">77</td></tr><tr><td>ウインナー</td><td class="num">0</td><td class="num">0</td><td class="num">77</td></tr><tr><td>かぼちゃ</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>油揚げ</td><td class="num">0</td><td class="num">0</td><td class="num">3</td></tr><tr><td>凍結卵白</td><td class="num">0</td><td class="num">42</td><td class="num">57</td></tr><tr><td>冷凍とろろ</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>豚脂ミンチ</td><td class="num">0</td><td class="num">0</td><td class="num">28</td></tr></tbody>
     </table>
   </div>
 </div>
@@ -2838,14 +2825,8 @@ PAGES.transactions = () => `
   </div>
   <div class="card" style="padding:0;">
     <table>
-      <thead><tr><th>日時</th><th>種別</th><th>商品</th><th>取引先/工場</th><th class="num">数量</th><th>ロット</th><th>担当</th></tr></thead>
-      <tbody>
-        <tr><td>—</td><td><span class="badge badge-green">入庫</span></td><td>カネスエ磯辺揚げ</td><td>関東工場</td><td class="num">—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td><span class="badge badge-blue">出庫</span></td><td>カネスエ磯辺揚げ</td><td>ゲンキー（Genky）</td><td class="num">—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td><span class="badge badge-red">廃棄</span></td><td>紗おり 豆乳天ぷら</td><td>-</td><td class="num">—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td><span class="badge badge-green">入庫</span></td><td>カネスエ磯辺揚げ</td><td>関東工場</td><td class="num">—</td><td>—</td><td>—</td></tr>
-        <tr><td>—</td><td><span class="badge badge-blue">出庫</span></td><td>ゲンキーいか</td><td>ゲンキー（Genky）</td><td class="num">—</td><td>—</td><td>—</td></tr>
-      </tbody>
+      <thead><tr><th>原料・副材料</th><th class="num">入庫</th><th class="num">出庫</th><th class="num">在庫</th></tr></thead>
+      <tbody><tr><td>ムキ枝豆</td><td class="num">0</td><td class="num">44</td><td class="num">96</td></tr><tr><td>ムキ枝豆 インドネシア</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>コーン</td><td class="num">0</td><td class="num">12</td><td class="num">184</td></tr><tr><td>絞りとうふ</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>ほうれん草</td><td class="num">0</td><td class="num">1</td><td class="num">28</td></tr><tr><td>いんげん</td><td class="num">0</td><td class="num">0</td><td class="num">30</td></tr><tr><td>イカ耳</td><td class="num">0</td><td class="num">26</td><td class="num">77</td></tr><tr><td>ウインナー</td><td class="num">0</td><td class="num">0</td><td class="num">77</td></tr><tr><td>かぼちゃ</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>油揚げ</td><td class="num">0</td><td class="num">0</td><td class="num">3</td></tr><tr><td>凍結卵白</td><td class="num">0</td><td class="num">42</td><td class="num">57</td></tr><tr><td>冷凍とろろ</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr><tr><td>豚脂ミンチ</td><td class="num">0</td><td class="num">0</td><td class="num">28</td></tr></tbody>
     </table>
   </div>
 </div>
