@@ -809,7 +809,7 @@ function goPage(pageId, el) {
   window.scrollTo(0, 0);
   setTimeout(initCharts, 50);
   setTimeout(bindTabs, 50);
-  if (pageId === 'weather') setTimeout(fetchWeather, 60);
+  if (pageId === 'weather' || pageId === 'dashboard') setTimeout(fetchWeather, 60);
 }
 
 // ===== 実気象データ連携（Open-Meteo / 愛知県武豊町・本社） =====
@@ -828,12 +828,15 @@ function wxDesc(code){ return WX_CODES[code] || ['—','🌡️']; }
 function fetchWeather(){
   const status = document.getElementById('wxStatus');
   const body = document.getElementById('wxLiveBody');
-  if (!body) return;
+  const dashStrip = document.getElementById('wxDashStrip');
+  const dashStatus = document.getElementById('wxDashStatus');
+  if (!body && !dashStrip) return;
   const url = 'https://api.open-meteo.com/v1/forecast?latitude=34.843&longitude=136.917'
     + '&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m'
     + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
     + '&timezone=Asia%2FTokyo&forecast_days=7';
   if (status) status.textContent = '取得中…';
+  if (dashStatus) dashStatus.textContent = 'Open-Meteo 取得中…';
   fetch(url).then(r => r.json()).then(d => {
     const c = d.current, dy = d.daily;
     const [cd, ce] = wxDesc(c.weather_code);
@@ -859,11 +862,27 @@ function fetchWeather(){
         + '</div>';
     }
     fc += '</div>';
-    body.innerHTML = cur + fc;
+    if (body) body.innerHTML = cur + fc;
     if (status) status.textContent = '取得 ' + now + '（Open-Meteo）';
+    // ダッシュボード用コンパクト7日間ストリップ
+    if (dashStrip) {
+      let ds = '';
+      for (let i=0;i<dy.time.length;i++){
+        const dt = new Date(dy.time[i]+'T00:00:00');
+        const [wd, we] = wxDesc(dy.weather_code[i]);
+        ds += '<div class="w-card"><div class="w-day">'+dy.time[i].slice(5)+' '+days[dt.getDay()]+'</div>'
+          + '<div class="w-icon">'+we+'</div>'
+          + '<div class="w-temp">'+Math.round(dy.temperature_2m_max[i])+'℃</div>'
+          + '<div class="w-impact" style="color:#2563eb;">☂'+(dy.precipitation_probability_max[i]??0)+'%</div></div>';
+      }
+      dashStrip.innerHTML = ds;
+    }
+    if (dashStatus) dashStatus.textContent = 'Open-Meteo 取得 ' + now;
   }).catch(e => {
     if (status) status.textContent = '取得失敗';
-    body.innerHTML = '<div style="color:#dc2626;">気象データの取得に失敗しました。ネットワークをご確認のうえ「天気を再取得」を押してください。</div>';
+    if (body) body.innerHTML = '<div style="color:#dc2626;">気象データの取得に失敗しました。「天気を再取得」を押してください。</div>';
+    if (dashStatus) dashStatus.textContent = '取得失敗';
+    if (dashStrip) dashStrip.innerHTML = '<div class="w-card"><div class="w-day" style="color:#dc2626;">取得失敗</div></div>';
   });
 }
 
@@ -975,15 +994,9 @@ PAGES.dashboard = () => `
     <canvas id="dashFC" height="180"></canvas>
   </div>
   <div class="card">
-    <div class="card-header"><div class="card-title">7日間 天候・需要影響</div><span class="card-sub">気象庁API</span></div>
-    <div class="weather-strip">
-      <div class="w-card"><div class="w-day">5/25 月</div><div class="w-icon">☀</div><div class="w-temp">26℃</div><div class="w-impact up">+8%</div></div>
-      <div class="w-card"><div class="w-day">5/26 火</div><div class="w-icon">☀</div><div class="w-temp">28℃</div><div class="w-impact up">+18%</div></div>
-      <div class="w-card"><div class="w-day">5/27 水</div><div class="w-icon">☀</div><div class="w-temp">29℃</div><div class="w-impact up">+22%</div></div>
-      <div class="w-card"><div class="w-day">5/28 木</div><div class="w-icon">☁</div><div class="w-temp">24℃</div><div class="w-impact flat">±0%</div></div>
-      <div class="w-card"><div class="w-day">5/29 金</div><div class="w-icon">☂</div><div class="w-temp">21℃</div><div class="w-impact down">-12%</div></div>
-      <div class="w-card"><div class="w-day">5/30 土</div><div class="w-icon">☂</div><div class="w-temp">19℃</div><div class="w-impact down">-15%</div></div>
-      <div class="w-card"><div class="w-day">5/31 日</div><div class="w-icon">☁</div><div class="w-temp">22℃</div><div class="w-impact down">-5%</div></div>
+    <div class="card-header"><div class="card-title">7日間 天候予報（武豊町・本社）</div><span class="card-sub" id="wxDashStatus">Open-Meteo 取得中…</span></div>
+    <div class="weather-strip" id="wxDashStrip">
+      <div class="w-card"><div class="w-day">読込中…</div></div>
     </div>
     <div style="margin-top:10px;">
       <div class="metric-row"><span class="metric-label">温度感応商品</span><span class="metric-value">38品目</span></div>
