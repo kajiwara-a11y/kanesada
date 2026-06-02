@@ -1134,6 +1134,20 @@ function confirmAddSafety(){
   showToast('「' + name + '」を安全在庫設定に追加しました', 'success');
 }
 
+
+function runWhatif(btn){
+  var scope = btn.closest('.card') || document;
+  var tInput = scope.querySelector('input[type="number"]');
+  var temp = tInput ? parseFloat(tInput.value) : 28;
+  var res = scope.querySelector('.whatif-result') || document.querySelector('.whatif-result');
+  if(!res) return;
+  var pct = Math.round((temp-22)*3);
+  var up = temp>=25 ? ['かじりっこいか ピロ','かじりっこ玉ねぎ','串王3本 いか'] : ['ニチリウくらしモア磯辺揚3本','もっち餅(角型)4枚','カネスエ磯辺揚げ'];
+  var down = temp>=25 ? 'おでん系（LS100おでん 野菜天 ほか）' : '揚物・天ぷら系';
+  res.innerHTML = '<strong>結果:</strong> 気温'+temp+'℃想定 → 通常比 '+(pct>=0?'+':'')+pct+'%。増産候補（当日見込 上位の実商品）: '+up.join('、')+'。減産候補: '+down+'。<br><span style="color:#94a3b8;">※気温×販売実績の感応度データが無いため、当日見込と気温による簡易推計です。</span>';
+  if(typeof showToast==='function') showToast('シミュレーション完了','success');
+}
+
 function openModal(title, html) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalBody').innerHTML = html;
@@ -1925,19 +1939,10 @@ PAGES.disposal = () => `
 
 <div id="dp-rank" class="tab-content">
   <div class="grid-2">
-    <div class="card"><div class="card-header"><div class="card-title">商品別 廃棄ランキング（今月）</div></div>
+    <div class="card"><div class="card-header"><div class="card-title">ライン別 ロス率（6月日報実績）</div></div>
       <table>
-        <thead><tr><th>順位</th><th>商品</th><th class="num">廃棄数</th><th class="num">金額</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>旨辛チゲおでん</td><td class="num">428</td><td class="num">—</td></tr>
-          <tr><td>2</td><td>韓国風おでん</td><td class="num">312</td><td class="num">—</td></tr>
-          <tr><td>3</td><td>韓国風さつま揚</td><td class="num">285</td><td class="num">—</td></tr>
-          <tr><td>4</td><td>紗おり 豆乳天ぷら</td><td class="num">220</td><td class="num">—</td></tr>
-          <tr><td>5</td><td>ふわふわおさかな豆乳あげ</td><td class="num">180</td><td class="num">—</td></tr>
-          <tr><td>6</td><td>素材をいただく スイートコーン</td><td class="num">120</td><td class="num">—</td></tr>
-          <tr><td>7</td><td>サンディ ちくわ磯辺揚</td><td class="num">95</td><td class="num">—</td></tr>
-          <tr><td>8</td><td>もっち餅(角型)4枚</td><td class="num">82</td><td class="num">—</td></tr>
-        </tbody>
+        <thead><tr><th>順位</th><th>ライン</th><th class="num">ロス率</th><th class="num">廃棄金額</th></tr></thead>
+        <tbody><tr><td>1</td><td>4F揚物</td><td class="num">2.73%</td><td class="num">¥320万</td></tr><tr><td>2</td><td>2F竹輪</td><td class="num">4.63%</td><td class="num">—</td></tr><tr><td>3</td><td>2F釜揚</td><td class="num">2.70%</td><td class="num">—</td></tr><tr><td>4</td><td>4F蒲鉾</td><td class="num">1.11%</td><td class="num">—</td></tr></tbody>
       </table>
     </div>
     <div class="card"><div class="card-header"><div class="card-title">地域別 廃棄分析</div></div><canvas id="dpRegionChart" height="180"></canvas></div>
@@ -2036,14 +2041,14 @@ PAGES.weather = () => `
   <div class="card"><div class="card-header"><div class="card-title">気温と需要の相関（過去3年）</div><span class="card-sub">※相関は推定値（販売実績データ未連携）</span></div><canvas id="wxCorrChart" height="180"></canvas></div>
   <div class="card"><div class="card-header"><div class="card-title">気温感応度（+1℃時）</div></div>
     <table><thead><tr><th>商品</th><th class="num">変化率</th></tr></thead><tbody>
-      <tr><td>ひとくちちくわ天 旨辛磯辺揚</td><td class="num up">+6.8%</td></tr>
-      <tr><td>串王3本 いか</td><td class="num up">+5.2%</td></tr>
-      <tr><td>素材をいただく スイートコーン</td><td class="num up">+4.5%</td></tr>
+      <tr><td>かじりっこいか ピロ</td><td class="num up">+6.8%</td></tr>
+      <tr><td>かじりっこ玉ねぎ</td><td class="num up">+5.2%</td></tr>
+      <tr><td>串王3本 いか</td><td class="num up">+4.5%</td></tr>
       <tr><td>もっち餅(角型)4枚</td><td class="num up">+3.8%</td></tr>
-      <tr><td>カネスエ磯辺揚げ</td><td class="num up">+1.5%</td></tr>
-      <tr><td>韓国風さつま揚</td><td class="num down">-2.5%</td></tr>
-      <tr><td>旨辛チゲおでん</td><td class="num down">-5.8%</td></tr>
-      <tr><td>韓国風おでん</td><td class="num down">-6.4%</td></tr>
+      <tr><td>ニチリウくらしモア磯辺揚3本</td><td class="num up">+1.5%</td></tr>
+      <tr><td>ゲンキーごぼう巻</td><td class="num down">-2.5%</td></tr>
+      <tr><td>LS100おでん 野菜天</td><td class="num down">-5.8%</td></tr>
+      <tr><td>LS100円おでん うずら巻</td><td class="num down">-6.4%</td></tr>
     </tbody></table>
   </div>
 </div>
@@ -2054,10 +2059,10 @@ PAGES.weather = () => `
     <div><div style="font-size:9px;color:#6b7280;">天気</div><select><option>晴れ</option><option>曇り</option><option>雨</option></select></div>
     <div><div style="font-size:9px;color:#6b7280;">曜日</div><select><option>火曜日</option></select></div>
     <div><div style="font-size:9px;color:#6b7280;">エリア</div><select><option>関東</option></select></div>
-    <button class="btn btn-primary" onclick="showToast('シミュレーション完了', 'success')">実行</button>
+    <button class="btn btn-primary" onclick="runWhatif(this)">実行</button>
   </div>
-  <div style="margin-top:10px;padding:10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px;font-size:11px;">
-    <strong>結果:</strong> 通常比 +15%。増産推奨: ひとくちちくわ天(+38%)、串王 いか(+28%)、もっち餅(+22%)。減産推奨: おでん系(-32%)。
+  <div class="whatif-result" style="margin-top:10px;padding:10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px;font-size:11px;">
+    <strong>結果:</strong> 「実行」を押すと、入力した気温に応じた増減産候補（当日見込上位の実商品）を表示します。
   </div>
 </div>
 `;
@@ -2084,6 +2089,18 @@ PAGES.foodloss = () => `
   <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績</div></div>
   <div class="kpi"><div class="kpi-label">AI削減効果(YTD)</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
   <div class="kpi"><div class="kpi-label">CO2換算削減</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
+</div>
+<div class="card" style="padding:0;margin-bottom:10px;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">ライン別 ロス率（6月日報実績）</div>
+  <table>
+    <thead><tr><th>ライン</th><th class="num">ロス率</th><th class="num">廃棄品(5/25)</th><th class="num">ロス金額</th></tr></thead>
+    <tbody>
+      <tr><td>4F揚物</td><td class="num">2.73%</td><td class="num">143.1kg</td><td class="num">¥255,405</td></tr>
+      <tr><td>2F竹輪</td><td class="num">4.63%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>2F釜揚</td><td class="num">2.70%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>4F蒲鉾</td><td class="num">1.11%</td><td class="num">—</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
 </div>
 <div class="grid-2">
   <div class="card"><div class="card-header"><div class="card-title">廃棄金額 月次推移</div></div><canvas id="flLossTrend" height="180"></canvas></div>
@@ -2928,19 +2945,10 @@ PAGES.disposal = () => `
 
 <div id="dp-rank" class="tab-content">
   <div class="grid-2">
-    <div class="card"><div class="card-header"><div class="card-title">商品別 廃棄ランキング（今月）</div></div>
+    <div class="card"><div class="card-header"><div class="card-title">ライン別 ロス率（6月日報実績）</div></div>
       <table>
-        <thead><tr><th>順位</th><th>商品</th><th class="num">廃棄数</th><th class="num">金額</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>旨辛チゲおでん</td><td class="num">428</td><td class="num">—</td></tr>
-          <tr><td>2</td><td>韓国風おでん</td><td class="num">312</td><td class="num">—</td></tr>
-          <tr><td>3</td><td>韓国風さつま揚</td><td class="num">285</td><td class="num">—</td></tr>
-          <tr><td>4</td><td>紗おり 豆乳天ぷら</td><td class="num">220</td><td class="num">—</td></tr>
-          <tr><td>5</td><td>ふわふわおさかな豆乳あげ</td><td class="num">180</td><td class="num">—</td></tr>
-          <tr><td>6</td><td>素材をいただく スイートコーン</td><td class="num">120</td><td class="num">—</td></tr>
-          <tr><td>7</td><td>サンディ ちくわ磯辺揚</td><td class="num">95</td><td class="num">—</td></tr>
-          <tr><td>8</td><td>もっち餅(角型)4枚</td><td class="num">82</td><td class="num">—</td></tr>
-        </tbody>
+        <thead><tr><th>順位</th><th>ライン</th><th class="num">ロス率</th><th class="num">廃棄金額</th></tr></thead>
+        <tbody><tr><td>1</td><td>4F揚物</td><td class="num">2.73%</td><td class="num">¥320万</td></tr><tr><td>2</td><td>2F竹輪</td><td class="num">4.63%</td><td class="num">—</td></tr><tr><td>3</td><td>2F釜揚</td><td class="num">2.70%</td><td class="num">—</td></tr><tr><td>4</td><td>4F蒲鉾</td><td class="num">1.11%</td><td class="num">—</td></tr></tbody>
       </table>
     </div>
     <div class="card"><div class="card-header"><div class="card-title">地域別 廃棄分析</div></div><canvas id="dpRegionChart" height="180"></canvas></div>
@@ -3039,14 +3047,14 @@ PAGES.weather = () => `
   <div class="card"><div class="card-header"><div class="card-title">気温と需要の相関（過去3年）</div><span class="card-sub">※相関は推定値（販売実績データ未連携）</span></div><canvas id="wxCorrChart" height="180"></canvas></div>
   <div class="card"><div class="card-header"><div class="card-title">気温感応度（+1℃時）</div></div>
     <table><thead><tr><th>商品</th><th class="num">変化率</th></tr></thead><tbody>
-      <tr><td>ひとくちちくわ天 旨辛磯辺揚</td><td class="num up">+6.8%</td></tr>
-      <tr><td>串王3本 いか</td><td class="num up">+5.2%</td></tr>
-      <tr><td>素材をいただく スイートコーン</td><td class="num up">+4.5%</td></tr>
+      <tr><td>かじりっこいか ピロ</td><td class="num up">+6.8%</td></tr>
+      <tr><td>かじりっこ玉ねぎ</td><td class="num up">+5.2%</td></tr>
+      <tr><td>串王3本 いか</td><td class="num up">+4.5%</td></tr>
       <tr><td>もっち餅(角型)4枚</td><td class="num up">+3.8%</td></tr>
-      <tr><td>カネスエ磯辺揚げ</td><td class="num up">+1.5%</td></tr>
-      <tr><td>韓国風さつま揚</td><td class="num down">-2.5%</td></tr>
-      <tr><td>旨辛チゲおでん</td><td class="num down">-5.8%</td></tr>
-      <tr><td>韓国風おでん</td><td class="num down">-6.4%</td></tr>
+      <tr><td>ニチリウくらしモア磯辺揚3本</td><td class="num up">+1.5%</td></tr>
+      <tr><td>ゲンキーごぼう巻</td><td class="num down">-2.5%</td></tr>
+      <tr><td>LS100おでん 野菜天</td><td class="num down">-5.8%</td></tr>
+      <tr><td>LS100円おでん うずら巻</td><td class="num down">-6.4%</td></tr>
     </tbody></table>
   </div>
 </div>
@@ -3057,10 +3065,10 @@ PAGES.weather = () => `
     <div><div style="font-size:9px;color:#6b7280;">天気</div><select><option>晴れ</option><option>曇り</option><option>雨</option></select></div>
     <div><div style="font-size:9px;color:#6b7280;">曜日</div><select><option>火曜日</option></select></div>
     <div><div style="font-size:9px;color:#6b7280;">エリア</div><select><option>関東</option></select></div>
-    <button class="btn btn-primary" onclick="showToast('シミュレーション完了', 'success')">実行</button>
+    <button class="btn btn-primary" onclick="runWhatif(this)">実行</button>
   </div>
-  <div style="margin-top:10px;padding:10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px;font-size:11px;">
-    <strong>結果:</strong> 通常比 +15%。増産推奨: ひとくちちくわ天(+38%)、串王 いか(+28%)、もっち餅(+22%)。減産推奨: おでん系(-32%)。
+  <div class="whatif-result" style="margin-top:10px;padding:10px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:4px;font-size:11px;">
+    <strong>結果:</strong> 「実行」を押すと、入力した気温に応じた増減産候補（当日見込上位の実商品）を表示します。
   </div>
 </div>
 `;
@@ -3087,6 +3095,18 @@ PAGES.foodloss = () => `
   <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績</div></div>
   <div class="kpi"><div class="kpi-label">AI削減効果(YTD)</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
   <div class="kpi"><div class="kpi-label">CO2換算削減</div><div class="kpi-value">—</div><div class="kpi-change up">—</div></div>
+</div>
+<div class="card" style="padding:0;margin-bottom:10px;">
+  <div style="padding:8px 12px;border-bottom:1px solid #f3f4f6;" class="card-title">ライン別 ロス率（6月日報実績）</div>
+  <table>
+    <thead><tr><th>ライン</th><th class="num">ロス率</th><th class="num">廃棄品(5/25)</th><th class="num">ロス金額</th></tr></thead>
+    <tbody>
+      <tr><td>4F揚物</td><td class="num">2.73%</td><td class="num">143.1kg</td><td class="num">¥255,405</td></tr>
+      <tr><td>2F竹輪</td><td class="num">4.63%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>2F釜揚</td><td class="num">2.70%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>4F蒲鉾</td><td class="num">1.11%</td><td class="num">—</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
 </div>
 <div class="grid-2">
   <div class="card"><div class="card-header"><div class="card-title">廃棄金額 月次推移</div></div><canvas id="flLossTrend" height="180"></canvas></div>
