@@ -1194,10 +1194,10 @@ PAGES.dashboard = () => `
 
 CHARTS.dashFC = {
   type:'line',
-  data:{labels:['4/26','4/29','5/2','5/5','5/8','5/11','5/14','5/17','5/20','5/23','5/26'],
+  data:{labels:["5/19", "5/20", "5/21", "5/22", "5/23", "5/24", "5/25", "5/26", "5/27", "5/28", "5/29", "5/30", "5/31", "6/1"],
     datasets:[
-      {label:'実績',data:[],borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,0.08)',tension:0.3,fill:true,borderWidth:1.5,pointRadius:2},
-      {label:'予測',data:[],borderColor:'#d97706',borderDash:[4,4],tension:0.3,borderWidth:1.5,pointRadius:2}]},
+      {label:'実績(5月日次見込)',data:[112048,116014,116250,128242,113120,148436,125084,111382,null,null,null,null,null,null],borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,0.08)',tension:0.3,fill:true,borderWidth:1.5,pointRadius:2},
+      {label:'予測(線形トレンド)',data:[null,null,null,null,null,null,null,111382,127864,129318,130772,132226,133680,135134],borderColor:'#d97706',borderDash:[4,4],tension:0.3,borderWidth:1.5,pointRadius:2}]},
   options:{responsive:true,plugins:{legend:{position:'top',labels:{font:{size:10}}}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.dashDisposal = {
@@ -1299,15 +1299,15 @@ PAGES.forecast = () => `
     <table>
       <thead><tr><th>商品名</th><th>カテゴリー</th><th class="num">本日</th><th class="num">明日</th><th class="num">+3日</th><th class="num">+7日</th><th class="num">+14日</th><th>精度</th><th>操作</th></tr></thead>
       <tbody>
-        <tr><td>ニチリウくらしモア磯辺揚3本</td><td><span class="badge badge-blue">揚物・天ぷら</span></td><td class="num">1,230</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>カネスエ磯辺揚げ</td><td><span class="badge badge-blue">揚物・天ぷら</span></td><td class="num">360</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>かじりっこ玉ねぎ</td><td><span class="badge badge-blue">かじりっこ</span></td><td class="num">3,924</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>かじりっこいか ピロ</td><td><span class="badge badge-blue">かじりっこ</span></td><td class="num">5,676</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>串王3本 いか</td><td><span class="badge badge-blue">串商品</span></td><td class="num">1,008</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>串王3本 紅生姜</td><td><span class="badge badge-blue">串商品</span></td><td class="num">48</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>もっち餅(角型)4枚</td><td><span class="badge badge-blue">新食感</span></td><td class="num">1,584</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>ニチリウくらしモア磯辺揚3本</td><td><span class="badge badge-blue">揚物・天ぷら</span></td><td class="num">1,230</td><td class="num">1,119</td><td class="num">1,201</td><td class="num">1,365</td><td class="num">1,652</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>カネスエ磯辺揚げ</td><td><span class="badge badge-blue">揚物・天ぷら</span></td><td class="num">360</td><td class="num">347</td><td class="num">341</td><td class="num">330</td><td class="num">310</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>かじりっこ玉ねぎ</td><td><span class="badge badge-blue">かじりっこ</span></td><td class="num">3,924</td><td class="num">4,362</td><td class="num">4,656</td><td class="num">5,244</td><td class="num">6,273</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>かじりっこいか ピロ</td><td><span class="badge badge-blue">かじりっこ</span></td><td class="num">5,676</td><td class="num">5,709</td><td class="num">6,138</td><td class="num">6,996</td><td class="num">8,497</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>串王3本 いか</td><td><span class="badge badge-blue">串商品</span></td><td class="num">1,008</td><td class="num">504</td><td class="num">672</td><td class="num">1,008</td><td class="num">1,596</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>串王3本 紅生姜</td><td><span class="badge badge-blue">串商品</span></td><td class="num">48</td><td class="num">24</td><td class="num">32</td><td class="num">48</td><td class="num">76</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>もっち餅(角型)4枚</td><td><span class="badge badge-blue">新食感</span></td><td class="num">1,584</td><td class="num">2,992</td><td class="num">3,883</td><td class="num">5,664</td><td class="num">8,781</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
         <tr><td>おつまみ棒天 いかキャベ</td><td><span class="badge badge-blue">おつまみ</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
-        <tr><td>ゲンキーごぼう巻</td><td><span class="badge badge-blue">揚物・天ぷら</span></td><td class="num">300</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
+        <tr><td>ゲンキーごぼう巻</td><td><span class="badge badge-blue">揚物・天ぷら</span></td><td class="num">300</td><td class="num">648</td><td class="num">645</td><td class="num">638</td><td class="num">625</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
         <tr><td>LS100おでん 野菜天</td><td><span class="badge badge-yellow">おでん</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td><button class="btn btn-ghost btn-xs">詳細</button></td></tr>
         <tr><td class="danger">旨辛チゲおでん</td><td class="danger"><span class="badge badge-red">要対応</span></td><td class="num danger">120</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="danger"><button class="btn btn-danger btn-xs">対応</button></td></tr>
       </tbody>
