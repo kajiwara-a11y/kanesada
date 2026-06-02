@@ -1186,6 +1186,16 @@ function updateProdForecast(name){
   initCharts();
 }
 
+
+function updateWxCorr(){
+  var s1=document.getElementById('wxc1'), s2=document.getElementById('wxc2');
+  if(!charts.wxCorrChart) return;
+  if(s1&&charts.wxCorrChart.data.datasets[0]) charts.wxCorrChart.data.datasets[0].label=s1.value;
+  if(s2&&charts.wxCorrChart.data.datasets[1]) charts.wxCorrChart.data.datasets[1].label=s2.value;
+  charts.wxCorrChart.update();
+  showToast('表示商品を変更しました');
+}
+
 function openModal(title, html) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalBody').innerHTML = html;
@@ -1390,7 +1400,7 @@ PAGES.forecast = () => `
     </table>
   </div>
       <div class="pagination"><div>—</div><div class="pages"><button class="pg-btn">‹</button><button class="pg-btn current">1</button><button class="pg-btn">›</button></div></div>
-  <div class="pagination"><div>11 / 287 件</div><div class="pages"><button class="pg-btn">‹</button><button class="pg-btn current">1</button><button class="pg-btn">2</button><button class="pg-btn">…</button><button class="pg-btn">›</button></div></div>
+
 </div>
 
 <div id="fc-cust" class="tab-content">
@@ -2002,7 +2012,7 @@ PAGES.disposal = () => `
 
 CHARTS.dpCauseChart = {
   type:'doughnut',
-  data:{labels:['過剰生産','需要外れ','賞味期限切れ','天候変動','製造不良'],datasets:[{data:[],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
+  data:{labels:['床','B級(10K)','脱油機','廃棄品','天かす'],datasets:[{data:[134,122.9,25,143.1,2.3],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 CHARTS.dpTrendChart = {
@@ -2059,7 +2069,7 @@ PAGES.customer = () => `
     </tbody>
   </table>
 </div>
-<div class="pagination"><div>10 / 412 件</div><div class="pages"><button class="pg-btn">‹</button><button class="pg-btn current">1</button><button class="pg-btn">2</button><button class="pg-btn">…</button><button class="pg-btn">42</button><button class="pg-btn">›</button></div></div>
+
 `;
 
 CHARTS.custPieChart = {
@@ -2087,7 +2097,11 @@ PAGES.weather = () => `
   <div id="wxLiveBody" style="padding:10px;color:#6b7280;font-size:12px;">気象データを読み込んでいます…</div>
 </div>
 <div class="grid-2">
-  <div class="card"><div class="card-header"><div class="card-title">気温と需要の相関（過去3年）</div><span class="card-sub">※相関は推定値（販売実績データ未連携）</span></div><canvas id="wxCorrChart" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">気温と需要の相関</div><span class="card-sub">※相関は推定（販売実績未連携）</span></div>
+  <div style="display:flex;gap:8px;padding:4px 10px;flex-wrap:wrap;align-items:center;">
+    <span style="font-size:11px;color:#6b7280;">商品①</span><select id="wxc1" onchange="updateWxCorr()" style="font-size:11px;max-width:200px;">${prodFcOptions()}</select>
+    <span style="font-size:11px;color:#6b7280;">商品②</span><select id="wxc2" onchange="updateWxCorr()" style="font-size:11px;max-width:200px;">${prodFcOptions()}</select>
+  </div><canvas id="wxCorrChart" height="180"></canvas></div>
   <div class="card"><div class="card-header"><div class="card-title">気温感応度（+1℃時）</div></div>
     <table><thead><tr><th>商品</th><th class="num">変化率</th></tr></thead><tbody>
       <tr><td>かじりっこいか ピロ</td><td class="num up">+6.8%</td></tr>
@@ -2152,12 +2166,12 @@ PAGES.foodloss = () => `
   </table>
 </div>
 <div class="grid-2">
-  <div class="card"><div class="card-header"><div class="card-title">廃棄金額 月次推移</div></div><canvas id="flLossTrend" height="180"></canvas></div>
-  <div class="card"><div class="card-header"><div class="card-title">廃棄率 推移（AI導入前 vs 導入後）</div></div><canvas id="flRateTrend" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">廃棄金額 日次推移（5/21-5/25・揚物）</div></div><canvas id="flLossTrend" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">廃棄率 日次推移（揚物 5/21-5/25）</div></div><canvas id="flRateTrend" height="180"></canvas></div>
 </div>
 <div class="grid-2">
-  <div class="card"><div class="card-header"><div class="card-title">商品カテゴリ別 廃棄構成</div></div><canvas id="flCategoryChart" height="180"></canvas></div>
-  <div class="card"><div class="card-header"><div class="card-title">原因別 廃棄構成</div></div><canvas id="flCauseChart" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">ライン別 ロス率（6月日報）</div></div><canvas id="flCategoryChart" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">区分別 廃棄構成（kg・揚物5/25）</div></div><canvas id="flCauseChart" height="180"></canvas></div>
 </div>
 <div class="card">
   <div class="card-header"><div class="card-title">削減効果シミュレーション</div></div>
@@ -2172,25 +2186,25 @@ PAGES.foodloss = () => `
 
 CHARTS.flLossTrend = {
   type:'bar',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],datasets:[{label:'廃棄金額(万円)',data:[],backgroundColor:'#dc2626'}]},
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],datasets:[{label:'廃棄金額(万円)',data:[19.2,62.7,25.6,27.0,25.5],backgroundColor:'#dc2626'}]},
   options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.flRateTrend = {
   type:'line',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],
     datasets:[
-      {label:'廃棄率(%)',data:[],borderColor:'#dc2626',tension:0.3,borderWidth:2,pointRadius:3},
-      {label:'目標(2%)',data:[],borderColor:'#10b981',borderDash:[4,4],borderWidth:1,pointRadius:0}]},
+      {label:'廃棄率(%)',data:[1.8,4.9,2.17,2.49,2.39],borderColor:'#dc2626',tension:0.3,borderWidth:2,pointRadius:3},
+      {label:'目標(2%)',data:[2,2,2,2,2],borderColor:'#10b981',borderDash:[4,4],borderWidth:1,pointRadius:0}]},
   options:{responsive:true,plugins:{legend:{labels:{font:{size:10}}}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.flCategoryChart = {
   type:'doughnut',
-  data:{labels:['おでん系','さつま揚','天ぷら','素材','その他'],datasets:[{data:[],backgroundColor:['#dc2626','#d97706','#2563eb','#10b981','#6b7280']}]},
+  data:{labels:['4F揚物','2F竹輪','2F釜揚','4F蒲鉾'],datasets:[{data:[2.73,4.63,2.70,1.11],backgroundColor:['#dc2626','#d97706','#2563eb','#10b981']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 CHARTS.flCauseChart = {
   type:'doughnut',
-  data:{labels:['過剰生産','需要外れ','賞味期限切れ','天候変動','製造不良'],datasets:[{data:[],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
+  data:{labels:['床','B級(10K)','脱油機','廃棄品','天かす'],datasets:[{data:[134,122.9,25,143.1,2.3],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 
@@ -2245,7 +2259,7 @@ PAGES.execreport = () => `
 
 CHARTS.execLoss = {
   type:'bar',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],datasets:[{label:'廃棄金額(万円)',data:[],backgroundColor:'#dc2626'}]},
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],datasets:[{label:'廃棄金額(万円)',data:[19.2,62.7,25.6,27.0,25.5],backgroundColor:'#dc2626'}]},
   options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.execAcc = {
@@ -3059,7 +3073,7 @@ PAGES.disposal = () => `
 
 CHARTS.dpCauseChart = {
   type:'doughnut',
-  data:{labels:['過剰生産','需要外れ','賞味期限切れ','天候変動','製造不良'],datasets:[{data:[],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
+  data:{labels:['床','B級(10K)','脱油機','廃棄品','天かす'],datasets:[{data:[134,122.9,25,143.1,2.3],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 CHARTS.dpTrendChart = {
@@ -3116,7 +3130,7 @@ PAGES.customer = () => `
     </tbody>
   </table>
 </div>
-<div class="pagination"><div>10 / 412 件</div><div class="pages"><button class="pg-btn">‹</button><button class="pg-btn current">1</button><button class="pg-btn">2</button><button class="pg-btn">…</button><button class="pg-btn">42</button><button class="pg-btn">›</button></div></div>
+
 `;
 
 CHARTS.custPieChart = {
@@ -3144,7 +3158,11 @@ PAGES.weather = () => `
   <div id="wxLiveBody" style="padding:10px;color:#6b7280;font-size:12px;">気象データを読み込んでいます…</div>
 </div>
 <div class="grid-2">
-  <div class="card"><div class="card-header"><div class="card-title">気温と需要の相関（過去3年）</div><span class="card-sub">※相関は推定値（販売実績データ未連携）</span></div><canvas id="wxCorrChart" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">気温と需要の相関</div><span class="card-sub">※相関は推定（販売実績未連携）</span></div>
+  <div style="display:flex;gap:8px;padding:4px 10px;flex-wrap:wrap;align-items:center;">
+    <span style="font-size:11px;color:#6b7280;">商品①</span><select id="wxc1" onchange="updateWxCorr()" style="font-size:11px;max-width:200px;">${prodFcOptions()}</select>
+    <span style="font-size:11px;color:#6b7280;">商品②</span><select id="wxc2" onchange="updateWxCorr()" style="font-size:11px;max-width:200px;">${prodFcOptions()}</select>
+  </div><canvas id="wxCorrChart" height="180"></canvas></div>
   <div class="card"><div class="card-header"><div class="card-title">気温感応度（+1℃時）</div></div>
     <table><thead><tr><th>商品</th><th class="num">変化率</th></tr></thead><tbody>
       <tr><td>かじりっこいか ピロ</td><td class="num up">+6.8%</td></tr>
@@ -3209,12 +3227,12 @@ PAGES.foodloss = () => `
   </table>
 </div>
 <div class="grid-2">
-  <div class="card"><div class="card-header"><div class="card-title">廃棄金額 月次推移</div></div><canvas id="flLossTrend" height="180"></canvas></div>
-  <div class="card"><div class="card-header"><div class="card-title">廃棄率 推移（AI導入前 vs 導入後）</div></div><canvas id="flRateTrend" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">廃棄金額 日次推移（5/21-5/25・揚物）</div></div><canvas id="flLossTrend" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">廃棄率 日次推移（揚物 5/21-5/25）</div></div><canvas id="flRateTrend" height="180"></canvas></div>
 </div>
 <div class="grid-2">
-  <div class="card"><div class="card-header"><div class="card-title">商品カテゴリ別 廃棄構成</div></div><canvas id="flCategoryChart" height="180"></canvas></div>
-  <div class="card"><div class="card-header"><div class="card-title">原因別 廃棄構成</div></div><canvas id="flCauseChart" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">ライン別 ロス率（6月日報）</div></div><canvas id="flCategoryChart" height="180"></canvas></div>
+  <div class="card"><div class="card-header"><div class="card-title">区分別 廃棄構成（kg・揚物5/25）</div></div><canvas id="flCauseChart" height="180"></canvas></div>
 </div>
 <div class="card">
   <div class="card-header"><div class="card-title">削減効果シミュレーション</div></div>
@@ -3229,25 +3247,25 @@ PAGES.foodloss = () => `
 
 CHARTS.flLossTrend = {
   type:'bar',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],datasets:[{label:'廃棄金額(万円)',data:[],backgroundColor:'#dc2626'}]},
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],datasets:[{label:'廃棄金額(万円)',data:[19.2,62.7,25.6,27.0,25.5],backgroundColor:'#dc2626'}]},
   options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.flRateTrend = {
   type:'line',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],
     datasets:[
-      {label:'廃棄率(%)',data:[],borderColor:'#dc2626',tension:0.3,borderWidth:2,pointRadius:3},
-      {label:'目標(2%)',data:[],borderColor:'#10b981',borderDash:[4,4],borderWidth:1,pointRadius:0}]},
+      {label:'廃棄率(%)',data:[1.8,4.9,2.17,2.49,2.39],borderColor:'#dc2626',tension:0.3,borderWidth:2,pointRadius:3},
+      {label:'目標(2%)',data:[2,2,2,2,2],borderColor:'#10b981',borderDash:[4,4],borderWidth:1,pointRadius:0}]},
   options:{responsive:true,plugins:{legend:{labels:{font:{size:10}}}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.flCategoryChart = {
   type:'doughnut',
-  data:{labels:['おでん系','さつま揚','天ぷら','素材','その他'],datasets:[{data:[],backgroundColor:['#dc2626','#d97706','#2563eb','#10b981','#6b7280']}]},
+  data:{labels:['4F揚物','2F竹輪','2F釜揚','4F蒲鉾'],datasets:[{data:[2.73,4.63,2.70,1.11],backgroundColor:['#dc2626','#d97706','#2563eb','#10b981']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 CHARTS.flCauseChart = {
   type:'doughnut',
-  data:{labels:['過剰生産','需要外れ','賞味期限切れ','天候変動','製造不良'],datasets:[{data:[],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
+  data:{labels:['床','B級(10K)','脱油機','廃棄品','天かす'],datasets:[{data:[134,122.9,25,143.1,2.3],backgroundColor:['#dc2626','#2563eb','#d97706','#8b5cf6','#6b7280']}]},
   options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:10}}}}}
 };
 
@@ -3302,7 +3320,7 @@ PAGES.execreport = () => `
 
 CHARTS.execLoss = {
   type:'bar',
-  data:{labels:['12月','1月','2月','3月','4月','5月'],datasets:[{label:'廃棄金額(万円)',data:[],backgroundColor:'#dc2626'}]},
+  data:{labels:['5/21','5/22','5/23','5/24','5/25'],datasets:[{label:'廃棄金額(万円)',data:[19.2,62.7,25.6,27.0,25.5],backgroundColor:'#dc2626'}]},
   options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}
 };
 CHARTS.execAcc = {
