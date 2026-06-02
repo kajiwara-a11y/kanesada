@@ -4507,117 +4507,114 @@ function detailProductMaster(c) {
   );
 }
 
+function _eFoot(extra){return '<button class="btn btn-secondary" onclick="closeModal()">閉じる</button> '+(extra||'')+' <button class="btn btn-primary" onclick="closeModal();showToast(\'保存しました\',\'success\')">保存</button>';}
 function detailCustomerMaster(c) {
-  showRichModal(`${c[1]||''} - 取引先マスタ詳細`,
-    head((c[1]||'').slice(0,1), c[1]||'', `${c[2]||''} ｜ ${c[3]||''}`) +
+  showRichModal(`${c[1]||''} - 取引先マスタ編集`,
+    head((c[1]||'').slice(0,1), c[1]||'', `${c[2]||''}`) +
     sec('基本情報',
-      kv('コード', c[0]||'') + kv('業態', c[2]||'') +
-      kv('地域', c[3]||'') + kv('担当営業', c[4]||'') +
-      kv('締日', c[5]||'') + kv('支払条件', c[6]||'') +
-      kv('取引開始', c[7]||'') + kv('状態', c[8]||'')),
-    {footer:`<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>
-             <button class="btn btn-primary" onclick="closeModal();showToast('編集モードに切り替え')">編集</button>`}
+      _editRow('取引先名', c[1]) + _editRow('コード', c[0]) + _editRow('業態', c[2]) +
+      _editRow('地域', c[3]) + _editRow('担当営業', c[4]) + _editRow('締日', c[5]) +
+      _editRow('支払条件', c[6]) + _editRow('取引開始', c[7]) + _editRow('状態', c[8])),
+    {footer:_eFoot()}
   );
 }
-
 function detailCategory(c) {
-  showRichModal(`${c[1]||''} - カテゴリ詳細`,
+  showRichModal(`${c[1]||''} - カテゴリ編集`,
     sec('基本情報',
-      kv('コード', c[0]||'') + kv('カテゴリ名', c[1]||'') +
-      kv('大分類', c[2]||'') + kv('商品数', c[3]||'') +
-      kv('季節性', c[4]||'') + kv('状態', c[5]||''))
+      _editRow('カテゴリコード', c[0]) + _editRow('カテゴリ名', c[1]) + _editRow('大分類', c[2]) +
+      _editRow('登録商品数', c[3]) + _editRow('季節性', c[4]) + _editRow('状態', c[5])),
+    {footer:_eFoot()}
   );
 }
-
 function detailRegion(c) {
-  showRichModal('地域マスタ詳細',
-    sec('地域情報', c.map((v,i) => kv(`列${i+1}`, v)).join(''))
+  showRichModal(`${c[1]||'地域'} - 地域マスタ編集`,
+    sec('地域情報',
+      _editRow('地域コード', c[0]) + _editRow('地域名', c[1]) + _editRow('含まれる都道府県', c[2]) +
+      _editRow('気象観測地点', c[3]) + _editRow('取引先数', c[4]) + _editRow('月間売上', c[5]) + _editRow('状態', c[6])),
+    {footer:_eFoot()}
   );
 }
-
 function detailFactory(c) {
-  showRichModal(`${c[1]||c[0]||'工場'} - 詳細`,
-    head('工', c[1]||c[0]||'', '') +
-    sec('ライン情報', c.map((v,i) => kv(['ラインコード','ライン名','日産能力','主要製造品目','稼働率','状態'][i]||'', v)).join(''))
+  showRichModal(`${c[1]||c[0]||'工場'} - 工場マスタ編集`,
+    head('工', c[1]||c[0]||'', c[2]||'') +
+    sec('工場情報',
+      _editRow('工場コード', c[0]) + _editRow('工場名', c[1]) + _editRow('所在地', c[2]) +
+      _editRow('日産能力', c[3]) + _editRow('区分/ライン数', c[4]) + _editRow('生産可能商品', c[5]) + _editRow('状態', c[6])),
+    {footer:_eFoot()}
   );
 }
-
 function detailWarehouse(c) {
-  showRichModal(`${c[1]||''} - 物流センター詳細`,
+  showRichModal(`${c[1]||''} - 物流センター編集`,
     head('庫', c[1]||'', c[2]||'') +
     sec('施設情報',
-      kv('コード', c[0]||'') + kv('所在地', c[2]||'') +
-      kv('保管能力', c[3]||'') + kv('使用率', c[4]||'') +
-      kv('担当工場', c[5]||'') + kv('配送エリア', c[6]||'') + kv('状態', c[7]||''))
+      _editRow('コード', c[0]) + _editRow('センター名', c[1]) + _editRow('所在地', c[2]) +
+      _editRow('保管能力', c[3]) + _editRow('使用率', c[4]) + _editRow('担当工場', c[5]) +
+      _editRow('配送エリア', c[6]) + _editRow('状態', c[7])),
+    {footer:_eFoot()}
   );
 }
-
 function detailMaterial(c) {
-  showRichModal(`${c[1]||''} - 原材料詳細`,
-    head((c[1]||'').slice(0,1), c[1]||'', `${c[2]||''} ｜ ${c[3]||''}`) +
+  showRichModal(`${c[1]||''} - 原材料編集`,
+    head((c[1]||'').slice(0,1), c[1]||'', `${c[2]||''}`) +
     `<div class="detail-grid">
       <div>${sec('基本情報',
-        kv('コード', c[0]||'') + kv('カテゴリー', c[2]||'') +
-        kv('主仕入先', c[3]||'') + kv('副仕入先', c[4]||'') + kv('単位', c[5]||''))}</div>
+        _editRow('コード', c[0]) + _editRow('原料名', c[1]) + _editRow('カテゴリー', c[2]) +
+        _editRow('主仕入先', c[3]) + _editRow('副仕入先', c[4]) + _editRow('単位', c[5]))}</div>
       <div>${sec('在庫・コスト',
-        kv('単価', c[6]||'') + kv('標準在庫', c[7]||'') +
-        kv('安全在庫', c[8]||'') + kv('状態', c[9]||''))}</div>
-    </div>` +
-    sec('リードタイム', kv('標準LT', '3日') + kv('発注タイミング', '火・木・土')),
-    {size:'wide'}
+        _editRow('単価', c[6]) + _editRow('標準在庫', c[7]) +
+        _editRow('安全在庫', c[8]) + _editRow('状態', c[9]))}
+      ${sec('リードタイム（任意）', _editRow('標準LT(日)', '') + _editRow('発注タイミング', ''))}</div>
+    </div>`,
+    {size:'wide', footer:_eFoot()}
   );
 }
-
 function detailLeadtime(c) {
-  showRichModal('リードタイム詳細',
-    sec('情報', c.map((v,i) => kv(`列${i+1}`, v)).join(''))
+  showRichModal(`${c[1]||''} - リードタイム編集`,
+    sec('リードタイム',
+      _editRow('コード', c[0]) + _editRow('品名', c[1]) + _editRow('仕入先/ライン', c[2]) +
+      _editRow('標準LT', c[3]) + _editRow('最短LT', c[4]) + _editRow('最大LT', c[5]) +
+      _editRow('発注タイミング/曜日', c[6])),
+    {footer:_eFoot()}
   );
 }
-
 function detailBomItem(c) {
-  showRichModal('BOM明細',
-    sec('原料', c.map((v,i) => kv(['原料コード','原料名','使用量','単位','単価','原料費','備考'][i]||'', v)).join(''))
+  showRichModal(`${c[1]||''} - BOM明細編集`,
+    sec('原料',
+      _editRow('原料コード', c[0]) + _editRow('原料名', c[1]) + _editRow('使用量', c[2]) +
+      _editRow('単位', c[3]) + _editRow('単価', c[4]) + _editRow('原料費', c[5]) + _editRow('備考', c[6])),
+    {footer:_eFoot()}
   );
 }
-
 function detailUser(c) {
-  showRichModal(`${c[0]||''} - ユーザー詳細`,
+  showRichModal(`${c[0]||''} - ユーザー編集`,
     head((c[0]||'').slice(0,1), c[0]||'', `${c[2]||''} ｜ ${c[3]||''}`) +
     sec('アカウント',
-      kv('名前', c[0]||'') + kv('メール', c[1]||'') +
-      kv('所属', c[2]||'') + kv('権限', c[3]||'') +
-      kv('最終ログイン', c[4]||'') + kv('状態', c[5]||'')),
-    {footer:`<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>
-             <button class="btn btn-danger" onclick="closeModal();showToast('パスワードリセットメールを送信しました', 'success')">パスワードリセット</button>
-             <button class="btn btn-primary" onclick="closeModal();showToast('編集モードに切り替え')">編集</button>`}
+      _editRow('名前', c[0]) + _editRow('メール', c[1]) + _editRow('所属', c[2]) +
+      _editRow('権限', c[3]) + _editRow('最終ログイン', c[4]) + _editRow('状態', c[5])),
+    {footer:_eFoot('<button class="btn btn-danger" onclick="closeModal();showToast(\'パスワードリセットメールを送信しました\',\'success\')">パスワードリセット</button>')}
   );
 }
-
 function detailAudit(c) {
   showRichModal('操作ログ詳細',
     sec('ログ',
-      kv('日時', c[0]||'') + kv('ユーザー', c[1]||'') +
-      kv('操作', c[2]||'') + kv('IPアドレス', c[3]||''))
+      kv('日時', c[0]||'') + kv('ユーザー', c[1]||'') + kv('操作', c[2]||'') + kv('IPアドレス', c[3]||'')),
+    {footer:'<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>'}
   );
 }
-
 function detailImportLog(c) {
   showRichModal('取込履歴詳細',
     sec('取込',
-      kv('日時', c[0]||'') + kv('種別', c[1]||'') +
-      kv('ソース', c[2]||'') + kv('件数', c[3]||'') +
-      kv('成功', c[4]||'') + kv('エラー', c[5]||'') + kv('担当', c[6]||''))
+      kv('日時', c[0]||'') + kv('種別', c[1]||'') + kv('ソース', c[2]||'') + kv('件数', c[3]||'') +
+      kv('成功', c[4]||'') + kv('エラー', c[5]||'') + kv('担当', c[6]||'')),
+    {footer:'<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>'}
   );
 }
-
 function detailDataIssue(c) {
-  showRichModal('データ品質エラー詳細',
-    sec('エラー',
-      kv('種別', c[0]||'') + kv('データ種別', c[1]||'') +
-      kv('対象', c[2]||'') + kv('詳細', c[3]||'') +
-      kv('推奨対応', c[4]||'')),
-    {footer:`<button class="btn btn-secondary" onclick="closeModal()">閉じる</button>
-             <button class="btn btn-primary" onclick="closeModal();showToast('修正画面を開きます')">修正</button>`}
+  showRichModal('データ品質エラー - 修正',
+    sec('エラー内容',
+      _editRow('種別', c[0]) + _editRow('データ種別', c[1]) + _editRow('対象', c[2]) +
+      _editRow('詳細', c[3]) + _editRow('推奨対応', c[4]) + _editRow('修正値', '')),
+    {footer:'<button class="btn btn-secondary" onclick="closeModal()">閉じる</button> <button class="btn btn-primary" onclick="closeModal();showToast(\'修正を保存しました\',\'success\')">修正を保存</button>'}
   );
 }
 
