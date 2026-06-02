@@ -1146,10 +1146,10 @@ PAGES.dashboard = () => `
 <div class="alert alert-error"><span>⚠</span><div style="flex:1;">「旨辛チゲおでん」在庫が予測需要の5倍。賞味期限切れリスク。<a onclick="goPage('inventory')" style="cursor:pointer;text-decoration:underline;">対応する</a></div><span class="x">×</span></div>
 
 <div class="grid-4" style="margin-bottom:10px;">
-  <div class="kpi"><div class="kpi-label">フードロス率</div><div class="kpi-value">3.2<span class="unit">%</span></div><div class="kpi-change up">▼ 0.8pt 前月比</div></div>
+  <div class="kpi"><div class="kpi-label">フードロス率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績(4ライン平均)</div></div>
   <div class="kpi"><div class="kpi-label">予測精度 (MAPE)</div><div class="kpi-value">87.4<span class="unit">%</span></div><div class="kpi-change up">▲ 1.3pt</div></div>
   <div class="kpi"><div class="kpi-label">在庫回転率</div><div class="kpi-value">12.3<span class="unit">回/月</span></div><div class="kpi-change flat">±0.2</div></div>
-  <div class="kpi"><div class="kpi-label">月次廃棄金額</div><div class="kpi-value">¥124<span class="unit">万</span></div><div class="kpi-change up">▼ ¥38万</div></div>
+  <div class="kpi"><div class="kpi-label">月次廃棄金額</div><div class="kpi-value">¥320<span class="unit">万</span></div><div class="kpi-change up">揚物ライン実績(6月)</div></div>
 </div>
 
 <div class="grid-4" style="margin-bottom:10px;">
@@ -1490,7 +1490,7 @@ PAGES.production = () => `
     <div class="kpi"><div class="kpi-label">予定製造数</div><div class="kpi-value">45,330</div><div class="kpi-change">11ライン</div></div>
     <div class="kpi"><div class="kpi-label">予測売上</div><div class="kpi-value">¥8.2M</div><div class="kpi-change up">▲ 16%</div></div>
     <div class="kpi"><div class="kpi-label">予測廃棄数</div><div class="kpi-value">1,420</div><div class="kpi-change up">▼ 320</div></div>
-    <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">82%</div><div class="kpi-change">適正</div></div>
+    <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
   </div>
   <div class="card" style="padding:0;">
     <table>
@@ -1855,7 +1855,7 @@ PAGES.disposal = () => `
 <div class="grid-4" style="margin-bottom:10px;">
   <div class="kpi"><div class="kpi-label">本日廃棄数</div><div class="kpi-value">285</div><div class="kpi-change down">3商品</div></div>
   <div class="kpi"><div class="kpi-label">月間廃棄金額</div><div class="kpi-value">¥124万</div><div class="kpi-change up">▼ ¥38万</div></div>
-  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">3.2<span class="unit">%</span></div><div class="kpi-change up">▼ 0.8pt</div></div>
+  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績</div></div>
   <div class="kpi"><div class="kpi-label">削減効果(YTD)</div><div class="kpi-value">¥186万</div><div class="kpi-change up">AI導入後</div></div>
 </div>
 
@@ -2081,7 +2081,7 @@ PAGES.foodloss = () => `
 </div>
 <div class="grid-4" style="margin-bottom:10px;">
   <div class="kpi"><div class="kpi-label">月間廃棄金額</div><div class="kpi-value">¥124万</div><div class="kpi-change up">▼ ¥38万</div></div>
-  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">3.2<span class="unit">%</span></div><div class="kpi-change up">▼ 0.8pt</div></div>
+  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績</div></div>
   <div class="kpi"><div class="kpi-label">AI削減効果(YTD)</div><div class="kpi-value">¥186万</div><div class="kpi-change up">▲ 削減</div></div>
   <div class="kpi"><div class="kpi-label">CO2換算削減</div><div class="kpi-value">2.8<span class="unit">t-CO2</span></div><div class="kpi-change up">SDGs貢献</div></div>
 </div>
@@ -2099,7 +2099,7 @@ PAGES.foodloss = () => `
     <strong>現状（AI導入前ベースライン）:</strong> 月間廃棄額 ¥310万｜年間 ¥3,720万<br>
     <strong>現在（AI導入半年）:</strong> 月間廃棄額 ¥124万（▼60%）｜年換算 ¥1,488万<br>
     <strong>削減効果:</strong> <span style="color:#10b981;font-weight:600;">年間 ¥2,232万削減</span> ｜投資¥1,000万→投資回収9.2ヶ月<br>
-    <strong>1年後目標:</strong> 廃棄率1.5%（現在3.2%）｜月間¥58万まで削減
+    <strong>1年後目標:</strong> 廃棄率1.5%（現在2.8%）｜月間¥58万まで削減
   </div>
 </div>
 `;
@@ -2419,7 +2419,7 @@ PAGES.production = () => `
     <div class="kpi"><div class="kpi-label">予定製造数</div><div class="kpi-value">45,330</div><div class="kpi-change">11ライン</div></div>
     <div class="kpi"><div class="kpi-label">予測売上</div><div class="kpi-value">¥8.2M</div><div class="kpi-change up">▲ 16%</div></div>
     <div class="kpi"><div class="kpi-label">予測廃棄数</div><div class="kpi-value">1,420</div><div class="kpi-change up">▼ 320</div></div>
-    <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">82%</div><div class="kpi-change">適正</div></div>
+    <div class="kpi"><div class="kpi-label">設備稼働率</div><div class="kpi-value">94.6%</div><div class="kpi-change">6月日報実績</div></div>
   </div>
   <div class="card" style="padding:0;">
     <table>
@@ -2784,7 +2784,7 @@ PAGES.disposal = () => `
 <div class="grid-4" style="margin-bottom:10px;">
   <div class="kpi"><div class="kpi-label">本日廃棄数</div><div class="kpi-value">285</div><div class="kpi-change down">3商品</div></div>
   <div class="kpi"><div class="kpi-label">月間廃棄金額</div><div class="kpi-value">¥124万</div><div class="kpi-change up">▼ ¥38万</div></div>
-  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">3.2<span class="unit">%</span></div><div class="kpi-change up">▼ 0.8pt</div></div>
+  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績</div></div>
   <div class="kpi"><div class="kpi-label">削減効果(YTD)</div><div class="kpi-value">¥186万</div><div class="kpi-change up">AI導入後</div></div>
 </div>
 
@@ -3010,7 +3010,7 @@ PAGES.foodloss = () => `
 </div>
 <div class="grid-4" style="margin-bottom:10px;">
   <div class="kpi"><div class="kpi-label">月間廃棄金額</div><div class="kpi-value">¥124万</div><div class="kpi-change up">▼ ¥38万</div></div>
-  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">3.2<span class="unit">%</span></div><div class="kpi-change up">▼ 0.8pt</div></div>
+  <div class="kpi"><div class="kpi-label">廃棄率</div><div class="kpi-value">2.8<span class="unit">%</span></div><div class="kpi-change up">6月日報実績</div></div>
   <div class="kpi"><div class="kpi-label">AI削減効果(YTD)</div><div class="kpi-value">¥186万</div><div class="kpi-change up">▲ 削減</div></div>
   <div class="kpi"><div class="kpi-label">CO2換算削減</div><div class="kpi-value">2.8<span class="unit">t-CO2</span></div><div class="kpi-change up">SDGs貢献</div></div>
 </div>
@@ -3028,7 +3028,7 @@ PAGES.foodloss = () => `
     <strong>現状（AI導入前ベースライン）:</strong> 月間廃棄額 ¥310万｜年間 ¥3,720万<br>
     <strong>現在（AI導入半年）:</strong> 月間廃棄額 ¥124万（▼60%）｜年換算 ¥1,488万<br>
     <strong>削減効果:</strong> <span style="color:#10b981;font-weight:600;">年間 ¥2,232万削減</span> ｜投資¥1,000万→投資回収9.2ヶ月<br>
-    <strong>1年後目標:</strong> 廃棄率1.5%（現在3.2%）｜月間¥58万まで削減
+    <strong>1年後目標:</strong> 廃棄率1.5%（現在2.8%）｜月間¥58万まで削減
   </div>
 </div>
 `;
